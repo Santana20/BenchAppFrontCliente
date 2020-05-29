@@ -1,0 +1,31 @@
+<p>listar-producto works!</p>
+
+<div class="card bg-light" *ngIf="productos">
+    <div class="card-header">Productos</div>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>codigo</th>
+                <th>nombre</th>
+                <th>descripcion</th>
+                <th>precio</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of productos">
+                <th>{{p.codigo}}</th>
+                <th>{{p.nombre}}</th>
+                <th>{{p.descripcion}}</th>
+                <th>{{p.precio}}</th>
+                
+
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+
+

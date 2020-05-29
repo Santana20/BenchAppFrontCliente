@@ -1,0 +1,99 @@
+<p>create-pedido works!</p>
+<div>
+    <div class="card bg-dark text-white">
+        <h1 class="h3 mb-3 font-weight-normal text-center">Pedido</h1>
+        <div class="card-body text-center">
+            <form (ngSubmit) = "save()" #createP="ngForm">
+                <div class="form-group">
+                    
+                    <input type="text" class="form-control" id ="fdireccion" required [(ngModel)]="pedido.direccion" name="fdireccion" #fdireccion="ngModel" placeholder="Direccion">
+                    <div *ngIf="fdireccion.invalid && (fdireccion.dirty || fdireccion.touched)" class="alert alert-danger">
+                        <div *ngIf="fdireccion.errors.required">La Direccion es Requerida</div>
+                    </div>
+        
+                </div>
+                <div class="form-group">
+                    
+                    <input type="date" class="form-control" id ="ffecha" required [(ngModel)]="pedido.fecha" name="ffecha" #ffecha="ngModel" placeholder="Fecha">
+                    <div *ngIf="ffecha.invalid && (ffecha.dirty || ffecha.touched)" class="alert alert-danger">
+                        <div *ngIf="ffecha.errors.required">La Fecha es Requerida</div>
+                    </div>
+        
+                </div>
+                <div class="form-group">
+                    
+                    <input type="text" class="form-control" id ="fcosto" required [(ngModel)]="pedido.costo_total" name="fcosto" #fcosto="ngModel" placeholder="Costo Total">
+                    <div *ngIf="fcosto.invalid && (fcosto.dirty || fcosto.touched)" class="alert alert-danger">
+                        <div *ngIf="fcosto.errors.required">El Costo Total es Requerido</div>
+                    </div>
+        
+                </div>
+                <div class="form-group">
+                    
+                    <input type="text" class="form-control" id ="fDNI" required [(ngModel)]="fdni" name="fDNI" #fDNI="ngModel" placeholder="DNI">
+                    <div *ngIf="fDNI.invalid && (fDNI.dirty || fDNI.touched)" class="alert alert-danger">
+                        <div *ngIf="fDNI.errors.required">El DNI es Requerido</div>
+                    </div>
+        
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" [disabled]="!createP.form.valid">Registrar</button>
+                </div>
+        
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+
+<p></p>
+<p></p>
+
+<div>
+    <div class="card bg-dark text-white">
+        <h1 class="h3 mb-3 font-weight-normal text-center">Detalle Pedido</h1>
+        <div class="card-body text-center">
+            <form (ngSubmit) = "savePP()" #createPP="ngForm">
+                <div class="form-group">
+                    
+                    <input type="number" class="form-control" id ="Fpedido" required [(ngModel)]="fpedido" name="Fpedido" #Fpedido="ngModel" placeholder="Pedido">
+                    <div *ngIf="Fpedido.invalid && (Fpedido.dirty || Fpedido.touched)" class="alert alert-danger">
+                        <div *ngIf="Fpedido.errors.required">El Codigo Pedido es Requerido</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Fproducto"> Producto </label>
+                    <select [compareWith]="compararProducto" type="text" name="Fproducto" id="Fproducto" [(ngModel)]="pedidoProducto.producto">
+                        <option [ngValue]="undefined">
+                            --- Seleccione Producto ---
+                        </option>
+                        <option *ngFor="let tipo of productos" [ngValue]="tipo">
+                            {{tipo.nombre}}
+                        </option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    
+                    <input type="number" class="form-control" id ="Fprecio" required [(ngModel)]="pedidoProducto.precio" name="Fprecio" #Fprecio="ngModel" placeholder="Precio Producto">
+                    <div *ngIf="Fprecio.invalid && (Fprecio.dirty || Fprecio.touched)" class="alert alert-danger">
+                        <div *ngIf="Fprecio.errors.required">El Precio es Requerido</div>
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    
+                    <input type="number" class="form-control" id ="Fcantidad" required [(ngModel)]="pedidoProducto.cantidad_pedida" name="Fcantidad" #Fcantidad="ngModel" placeholder="Cantidad">
+                    <div *ngIf="Fcantidad.invalid && (Fcantidad.dirty || Fcantidad.touched)" class="alert alert-danger">
+                        <div *ngIf="Fcantidad.errors.required">La Cantidad es Requerida</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" [disabled]="!createPP.form.valid">RegistrarDetalle</button>
+                </div>
+        
+            </form>
+        </div>
+    </div>
+</div>
