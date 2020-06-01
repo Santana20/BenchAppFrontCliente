@@ -15,6 +15,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {FormsModule}  from '@angular/forms';
 import { ListarProductoOfertaComponent } from './producto-oferta/listar-producto-oferta/listar-producto-oferta.component';
+import { PantallaClienteComponent } from './cliente/pantalla-cliente/pantalla-cliente.component';
+import { PantallaPedidoComponent } from './pedido/pantalla-pedido/pantalla-pedido.component';
+import { PantallaProductoComponent } from './producto/pantalla-producto/pantalla-producto.component';
+import { PantallaOfertaComponent } from './producto-oferta/pantalla-oferta/pantalla-oferta.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { ListarProductoOfertaComponent } from './producto-oferta/listar-producto
     ListarPedidoProductoComponent,
     CreateProductoComponent,
     ListarProductoComponent,
-    ListarProductoOfertaComponent
+    ListarProductoOfertaComponent,
+    PantallaClienteComponent,
+    PantallaPedidoComponent,
+    PantallaProductoComponent,
+    PantallaOfertaComponent
+   
   ],
   imports: [
     BrowserModule,
