@@ -6,5 +6,4 @@ export class PedidoProducto {
     precio:number;
     cantidad_pedida:number;
     producto:Producto;
-    pedido:Pedido;
 }

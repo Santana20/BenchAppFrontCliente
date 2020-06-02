@@ -1,9 +1,10 @@
 <p>create-pedido works!</p>
+<!--********************************************************************FORM PARA PEDIDO***************************************************************************-->
 <div>
     <div class="card bg-dark text-white">
         <h1 class="h3 mb-3 font-weight-normal text-center">Pedido</h1>
         <div class="card-body text-center">
-            <form (ngSubmit) = "save()" #createP="ngForm">
+            <form (ngSubmit) = "save(createP)" #createP="ngForm">
                 <div class="form-group">
                     
                     <input type="text" class="form-control" id ="fdireccion" required [(ngModel)]="pedido.direccion" name="fdireccion" #fdireccion="ngModel" placeholder="Direccion">
@@ -20,14 +21,7 @@
                     </div>
         
                 </div>
-                <div class="form-group">
-                    
-                    <input type="text" class="form-control" id ="fcosto" required [(ngModel)]="pedido.costo_total" name="fcosto" #fcosto="ngModel" placeholder="Costo Total">
-                    <div *ngIf="fcosto.invalid && (fcosto.dirty || fcosto.touched)" class="alert alert-danger">
-                        <div *ngIf="fcosto.errors.required">El Costo Total es Requerido</div>
-                    </div>
-        
-                </div>
+                
                 <div class="form-group">
                     
                     <input type="text" class="form-control" id ="fDNI" required [(ngModel)]="fdni" name="fDNI" #fDNI="ngModel" placeholder="DNI">
@@ -37,7 +31,7 @@
         
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success" [disabled]="!createP.form.valid">Registrar</button>
+                    <button type="submit" class="btn btn-success" [disabled]="!createP.form.valid || listaPedidosProductos.length == 0">Registrar</button>
                 </div>
         
             </form>
@@ -49,23 +43,25 @@
 
 <p></p>
 <p></p>
-
+<!--*****************************************************FORM PARA DETALLE PEDIDO***************************************************************************-->
 <div>
     <div class="card bg-dark text-white">
         <h1 class="h3 mb-3 font-weight-normal text-center">Detalle Pedido</h1>
         <div class="card-body text-center">
-            <form (ngSubmit) = "savePP()" #createPP="ngForm">
+            <form (ngSubmit) = "savePP(createPP)" #createPP="ngForm">
+                <!-- 
                 <div class="form-group">
                     
                     <input type="number" class="form-control" id ="Fpedido" required [(ngModel)]="fpedido" name="Fpedido" #Fpedido="ngModel" placeholder="Pedido">
                     <div *ngIf="Fpedido.invalid && (Fpedido.dirty || Fpedido.touched)" class="alert alert-danger">
                         <div *ngIf="Fpedido.errors.required">El Codigo Pedido es Requerido</div>
                     </div>
-                </div>
+                </div>-->
+
                 <div class="form-group">
                     <label for="Fproducto"> Producto </label>
-                    <select [compareWith]="compararProducto" type="text" name="Fproducto" id="Fproducto" [(ngModel)]="pedidoProducto.producto">
-                        <option [ngValue]="undefined">
+                    <select  type="text" name="Fproducto" id="Fproducto" [(ngModel)]="pedidoProducto.producto">
+                        <option [ngValue]="undefined" selected>
                             --- Seleccione Producto ---
                         </option>
                         <option *ngFor="let tipo of productos" [ngValue]="tipo">
@@ -74,14 +70,7 @@
 
                     </select>
                 </div>
-                <div class="form-group">
-                    
-                    <input type="number" class="form-control" id ="Fprecio" required [(ngModel)]="pedidoProducto.precio" name="Fprecio" #Fprecio="ngModel" placeholder="Precio Producto">
-                    <div *ngIf="Fprecio.invalid && (Fprecio.dirty || Fprecio.touched)" class="alert alert-danger">
-                        <div *ngIf="Fprecio.errors.required">El Precio es Requerido</div>
-                    </div>
-                </div>
-        
+                
                 <div class="form-group">
                     
                     <input type="number" class="form-control" id ="Fcantidad" required [(ngModel)]="pedidoProducto.cantidad_pedida" name="Fcantidad" #Fcantidad="ngModel" placeholder="Cantidad">
@@ -89,11 +78,53 @@
                         <div *ngIf="Fcantidad.errors.required">La Cantidad es Requerida</div>
                     </div>
                 </div>
+
+                <!--
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success" [disabled]="!createPP.form.valid">RegistrarDetalle</button>
+                    
+                    <input type="number" class="form-control" id ="Fprecio" required [(ngModel)]="pedidoProducto.precio" name="Fprecio" placeholder="Precio Producto" disabled>
+                </div>-->
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" [disabled]="!createPP.form.valid || pedidoProducto.producto == undefined">Agregar</button>
                 </div>
         
             </form>
         </div>
+    </div>
+</div>
+
+<!--******************************************************************LISTAR EL DETALLE PEDIDO********************************************************************-->
+<div class ="card border-dar mb-3" *ngIf="listaPedidosProductos.length > 0">
+    <h5 class ="card-title">Listado de Detalle Pedido</h5>
+    <div>
+        <table class ="table table-dark">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio Unitario</th>
+                    <th>cantidad Pedida</th>
+                    <th>Sub-Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pp of listaPedidosProductos">
+                    <th>{{pp.producto.nombre}}</th>
+                    <th>{{pp.producto.precio}}</th>
+                    <th>{{pp.cantidad_pedida}}</th>
+                    <th>{{pp.precio}}</th>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total: </th>
+                    <!--No se como hacer q una columna ocupe n espacios, por lo que su lifehack respectivo-->
+                    <th></th>
+                    <th></th>
+                    <!--OBS: BORRAR CUANDO SE SEPA (PREGUNTARLE AL PROFESOR)-->
+                    <th>{{costoTotal}}</th>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 </div>
