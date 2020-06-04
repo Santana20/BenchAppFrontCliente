@@ -19,7 +19,16 @@ import { PantallaClienteComponent } from './cliente/pantalla-cliente/pantalla-cl
 import { PantallaPedidoComponent } from './pedido/pantalla-pedido/pantalla-pedido.component';
 import { PantallaProductoComponent } from './producto/pantalla-producto/pantalla-producto.component';
 import { PantallaOfertaComponent } from './producto-oferta/pantalla-oferta/pantalla-oferta.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//add Paginator hand Angular v9.0
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatPaginatorModule } from '@angular/material/paginator';
+//end add paginator
 
 @NgModule({
   declarations: [
@@ -42,7 +51,14 @@ import { PantallaOfertaComponent } from './producto-oferta/pantalla-oferta/panta
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule, // Paginator add hand
+    MatIconModule, // Paginator add hand
+    MatSortModule, // Paginator add hand
+    MatTableModule, // Paginator add hand
+    MatTooltipModule, // Paginator add hand
+    MatPaginatorModule // Paginator add hand
   ],
   providers: [],
   bootstrap: [AppComponent]
