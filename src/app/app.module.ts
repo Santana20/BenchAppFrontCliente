@@ -28,7 +28,10 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //end add paginator
+
+
 
 @NgModule({
   declarations: [
@@ -58,8 +61,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSortModule, // Paginator add hand
     MatTableModule, // Paginator add hand
     MatTooltipModule, // Paginator add hand
-    MatPaginatorModule // Paginator add hand
+    MatPaginatorModule, NgbModule // Paginator add hand
+    
   ],
+  //partes necesarias para el ventana emergente, le decimos hasta donde puede llegar nuestrso componentes
+  entryComponents:[CreateClienteComponent],
+  exports:[CreateClienteComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

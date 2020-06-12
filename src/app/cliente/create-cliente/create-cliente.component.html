@@ -1,5 +1,94 @@
-<p></p>
 
+
+<!--
+<ng-template #contenido let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title card-body text-center" >REGISTRO CLIENTE</h4>
+        <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="save()" #ClienteForm="ngForm" >
+            <div class="form-group">
+                <input type="text" class="form-control" id="Fdni" [(ngModel)]="cliente.dni"
+                        name="Fdni" required #Fdni="ngModel" placeholder="DNI"  minlength="8">
+                <div class="alert alert-danger"
+                        *ngIf="Fdni.invalid && (Fdni.dirty || Fdni.touched)">
+                    <div *ngIf="Fdni.errors.required">
+                            Descripcion es requerida.
+                    </div>
+                    <div *ngIf="Fdni.errors.minlength">
+                        Minimo 8 digitos
+                </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="Fnombre" [(ngModel)]="cliente.nombre"
+                        name="Fnombre" required #Fnombre="ngModel" placeholder="Nombre">
+                <div class="alert alert-danger"
+                        *ngIf="Fnombre.invalid && (Fnombre.dirty || Fnombre.touched)">
+                    <div *ngIf="Fnombre.errors.required">
+                            Descripcion es requerida.
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="Femail" [(ngModel)]="cliente.email"
+                        name="Femail" required #Femail="ngModel" placeholder="Email">
+                <div class="alert alert-danger"
+                        *ngIf="Femail.invalid && (Femail.dirty || Femail.touched)">
+                    <div *ngIf="Femail.errors.required">
+                            Descripcion es requerida.
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="Fpasssword" [(ngModel)]="cliente.password"
+                        name="Fpasssword" required #Fpasssword="ngModel" placeholder="Password">
+                <div class="alert alert-danger"
+                        *ngIf="Fpasssword.invalid && (Fpasssword.dirty || Fpasssword.touched)">
+                    <div *ngIf="Fpasssword.errors.required">
+                            Descripcion es requerida.
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="Ftelefono" [(ngModel)]="cliente.telefono"
+                        name="Ftelefono" required #Ftelefono="ngModel" placeholder="Telefono">
+                <div class="alert alert-danger"
+                        *ngIf="Ftelefono.invalid && (Ftelefono.dirty || Ftelefono.touched)">
+                    <div *ngIf="Ftelefono.errors.required">
+                            Descripcion es requerida.
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success "
+                [disabled]="!ClienteForm.form.valid">Registrar</button>
+          </div>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        
+        <button type="button" class="btn btn-success " (click)="modal.close()">Cancelar</button>
+    </div>
+</ng-template>
+
+
+<button type="button" class="btn btn-success" (click)="OpenBackground(contenido)">Registrar Cliente fondo color</button>
+<button (click)="closeMyModal(false)"> cerrar modal</button>-->
+
+
+
+
+<!--
 <div class=""></div>
 <section id="registrer" class="mb-1">
     <div class="container">
@@ -83,6 +172,94 @@
         </div>
 
     </div>
-
+    <button (click)="closeMyModal(false)"> cerrar modal</button>
 </section>
+
+-->
+
+
+
+<div class=" body-contenido">
+    
+<div class="modal-header">
+    <h4 class="modal-title card-body text-center" >REGISTRO CLIENTE</h4>
+    <button class="close" aria-label="close" type="button" (click)="closeMyModal(false)">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form (ngSubmit)="save()" #ClienteForm="ngForm" >
+        <div class="form-group">
+            <input type="text" class="form-control" id="Fdni" [(ngModel)]="cliente.dni"
+                    name="Fdni" required #Fdni="ngModel" placeholder="DNI"  minlength="8">
+            <div class="alert alert-danger"
+                    *ngIf="Fdni.invalid && (Fdni.dirty || Fdni.touched)">
+                <div *ngIf="Fdni.errors.required">
+                        Descripcion es requerida.
+                </div>
+                <div *ngIf="Fdni.errors.minlength">
+                    Minimo 8 digitos
+            </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="Fnombre" [(ngModel)]="cliente.nombre"
+                    name="Fnombre" required #Fnombre="ngModel" placeholder="Nombre">
+            <div class="alert alert-danger"
+                    *ngIf="Fnombre.invalid && (Fnombre.dirty || Fnombre.touched)">
+                <div *ngIf="Fnombre.errors.required">
+                        Descripcion es requerida.
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" id="Femail" [(ngModel)]="cliente.email"
+                    name="Femail" required #Femail="ngModel" placeholder="Email">
+            <div class="alert alert-danger"
+                    *ngIf="Femail.invalid && (Femail.dirty || Femail.touched)">
+                <div *ngIf="Femail.errors.required">
+                        Descripcion es requerida.
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="Fpasssword" [(ngModel)]="cliente.password"
+                    name="Fpasssword" required #Fpasssword="ngModel" placeholder="Password">
+            <div class="alert alert-danger"
+                    *ngIf="Fpasssword.invalid && (Fpasssword.dirty || Fpasssword.touched)">
+                <div *ngIf="Fpasssword.errors.required">
+                        Descripcion es requerida.
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="Ftelefono" [(ngModel)]="cliente.telefono"
+                    name="Ftelefono" required #Ftelefono="ngModel" placeholder="Telefono">
+            <div class="alert alert-danger"
+                    *ngIf="Ftelefono.invalid && (Ftelefono.dirty || Ftelefono.touched)">
+                <div *ngIf="Ftelefono.errors.required">
+                        Descripcion es requerida.
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group card-body text-center">
+            <button type="submit" class="btn btn-success "
+            [disabled]="!ClienteForm.form.valid">Registrar</button>
+            
+      </div>
+
+    </form>
+</div>
+<div class="modal-footer">
+    <button (click)="closeMyModal(false)" class="btn btn-success "> CANCELAR</button>
+    
+</div>
+
+    
+</div>
 
