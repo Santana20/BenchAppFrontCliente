@@ -29,6 +29,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgregaracarritoComponent } from './producto/agregaracarrito/agregaracarrito.component';
+import { ActualizarcarritoComponent } from './pedido/actualizarcarrito/actualizarcarrito.component';
 //end add paginator
 
 
@@ -47,7 +49,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PantallaClienteComponent,
     PantallaPedidoComponent,
     PantallaProductoComponent,
-    PantallaOfertaComponent
+    PantallaOfertaComponent,
+    AgregaracarritoComponent,
+    ActualizarcarritoComponent
    
   ],
   imports: [

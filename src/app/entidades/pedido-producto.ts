@@ -6,4 +6,11 @@ export class PedidoProducto {
     precio:number;
     cantidad_pedida:number;
     producto:Producto;
+
+    constructor(precio, cantidad, prod : Producto)
+    {
+        this.precio = precio;
+        this.cantidad_pedida = cantidad;
+        this.producto = prod;
+    }
 }

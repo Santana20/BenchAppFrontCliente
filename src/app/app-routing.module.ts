@@ -10,6 +10,7 @@ import { PantallaProductoComponent } from './producto/pantalla-producto/pantalla
 import { PantallaPedidoComponent } from './pedido/pantalla-pedido/pantalla-pedido.component';
 import { PantallaOfertaComponent } from './producto-oferta/pantalla-oferta/pantalla-oferta.component';
 import { PantallaClienteComponent } from './cliente/pantalla-cliente/pantalla-cliente.component';
+import { ActualizarcarritoComponent } from './pedido/actualizarcarrito/actualizarcarrito.component';
 
 
 
@@ -24,8 +25,8 @@ const routes: Routes = [
   {path:'pantalla-producto',component:PantallaProductoComponent},
   {path:'pantalla-pedido',component:PantallaPedidoComponent},
   {path:'pantalla-oferta',component:PantallaOfertaComponent},
-  {path:'pantalla-cliente',component:PantallaClienteComponent}
-  
+  {path:'pantalla-cliente',component:PantallaClienteComponent},
+  {path:'carrito', component:ActualizarcarritoComponent}
 ];
 
 @NgModule({

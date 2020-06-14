@@ -43,20 +43,24 @@
 
 <p></p>
 <p></p>
+
 <!--*****************************************************FORM PARA DETALLE PEDIDO***************************************************************************-->
+<!--
 <div>
     <div class="card bg-dark text-white">
         <h1 class="h3 mb-3 font-weight-normal text-center">Detalle Pedido</h1>
         <div class="card-body text-center">
             <form (ngSubmit) = "savePP(createPP)" #createPP="ngForm">
-                <!-- 
+                
+                //comentado
                 <div class="form-group">
                     
                     <input type="number" class="form-control" id ="Fpedido" required [(ngModel)]="fpedido" name="Fpedido" #Fpedido="ngModel" placeholder="Pedido">
                     <div *ngIf="Fpedido.invalid && (Fpedido.dirty || Fpedido.touched)" class="alert alert-danger">
                         <div *ngIf="Fpedido.errors.required">El Codigo Pedido es Requerido</div>
                     </div>
-                </div>-->
+                </div>
+                //comentado
 
                 <div class="form-group">
                     <label for="Fproducto"> Producto </label>
@@ -79,12 +83,13 @@
                     </div>
                 </div>
 
-                <!--
+                //comentado
                 <div class="form-group">
                     
                     <input type="number" class="form-control" id ="Fprecio" required [(ngModel)]="pedidoProducto.precio" name="Fprecio" placeholder="Precio Producto" disabled>
-                </div>-->
-                
+                </div>
+                //comentado
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-success" [disabled]="!createPP.form.valid || pedidoProducto.producto == undefined">Agregar</button>
                 </div>
@@ -93,6 +98,7 @@
         </div>
     </div>
 </div>
+-->
 
 <!--******************************************************************LISTAR EL DETALLE PEDIDO********************************************************************-->
 <div class ="card border-dar mb-3" *ngIf="listaPedidosProductos.length > 0">

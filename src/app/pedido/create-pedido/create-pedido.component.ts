@@ -7,6 +7,7 @@ import { Producto } from 'src/app/entidades/producto';
 import { ProductoService } from 'src/app/servicios/producto.service';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { CarritoService } from 'src/app/servicios/carrito.service';
 
 @Component({
   selector: 'app-create-pedido',
@@ -17,38 +18,57 @@ export class CreatePedidoComponent implements OnInit {
   pedido:Pedido=new Pedido();
   fdni:String;
 
-  pedidoProducto:PedidoProducto=new PedidoProducto();
+  //pedidoProducto:PedidoProducto=new PedidoProducto();
   fpedido:number;
   productos:Observable<Producto>;
 
   //*****variables********//
-  listaPedidosProductos: Array<PedidoProducto>;
+  listaPedidosProductos: PedidoProducto[];
   costoTotal:number;
 
-  constructor(private productoService:ProductoService,private pedidoService:PedidoService,private router:Router) 
+  constructor(private productoService:ProductoService,private pedidoService:PedidoService,private router:Router, private carritoservice: CarritoService) 
   { 
     this.costoTotal = 0;
-    this.listaPedidosProductos = new Array<PedidoProducto>();
   }
 
   ngOnInit(): void {
-    this.cargando();
+    //Recibimos el arreglo del carrito
+    this.listaPedidosProductos = this.carritoservice.getDetallePedido();
+
+    //calculamos la suma total del carrito
+    for (let i in this.listaPedidosProductos) {
+      this.costoTotal = this.costoTotal + this.listaPedidosProductos[i].precio;
+    }
   }
 
+  //metodo que guarda el pedido en base de datos junto con todos sus pedidosProductos.
   save(form : NgForm){
+    //pasamos los objetos pedidosproductos al arreglo productos del objeto pedido.
     this.pedido.productos = this.listaPedidosProductos;
+    //actualizamos el costo toal del pedido por la suma de subtotal del arreglo listaPedidosProductos.
     this.pedido.costo_total = this.costoTotal;
-    console.log(this.pedido);
     
+    console.log(this.pedido);
+
+    //eliminamos el item "carrito" del localstorage, es decir, se limpia los pedidosproductos que habian.
+    this.carritoservice.removeAllCarrito();
+
     this.pedidoService.CreatePedido(this.pedido,this.fdni).subscribe(
      
     );
     
     form.resetForm();
-    this.listaPedidosProductos = new Array<PedidoProducto>(); 
+    
+    
+    //actualizamos los objetos del arreglo carrito, para que este vacio
+    this.listaPedidosProductos = this.carritoservice.getDetallePedido();
+    //actualizamos el costototal a cero por si acaso.
     this.costoTotal = 0;
   }
 
+
+  //metodos que no se usaran, quiza los borremos o no.
+  /*
   savePP(form : NgForm){
     console.log(this.pedidoProducto);
     //this.pedidoService.createPedidoProducto(this.fpedido,this.pedidoProducto).subscribe(data =>this.router.navigate([]));
@@ -58,7 +78,7 @@ export class CreatePedidoComponent implements OnInit {
     this.listaPedidosProductos.push(this.pedidoProducto);
     this.pedidoProducto = new PedidoProducto();
     form.resetForm();
-  }
+  }*/
 
   cargando(){
     console.log("cargando productos")
