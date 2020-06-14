@@ -1,0 +1,97 @@
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+  
+        <!-- section title -->
+        <div class="col-md-12">
+          <div class="section-title">
+            <h3 class="font-weight-bold mb-4 pb-2">Nuestros Productos</h3>
+          </div>
+        </div>
+        <!-- /section title -->
+  
+        <!-- Products tab & slick -->
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-4 col-sm-6" *ngFor="let p of producto">
+              <div class="card my-2">
+                <img src="https://p4.wallpaperbetter.com/wallpaper/1017/647/742/food-pizza-cheese-tomatoes-olives-hd-wallpaper-preview.jpg" alt="{{p.name}}" width="200px" class="card-img-top" >
+                <div class="card-header">
+                  <div class="card-title">
+                    <p>{{p.nombre | titlecase}}</p>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h6>{{p.descripcion.substr(0, 40)}} ....</h6>
+                  <p class="lead">{{p.precio | currency:'USD'}}</p>
+                </div>
+  
+                <div class="row d-flex justify-content-center border-primary my-3">
+                  <div class="col-md-6 ">
+  
+                  </div>
+                </div>
+  
+              </div>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  
+  </div>
+<!--Seccion Ofertas-->
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+  
+        <!-- section title -->
+        <div class="col-md-12">
+          <div class="section-title">
+            <h3 class="font-weight-bold mb-4 pb-2"> Nuestras Ofertas</h3>
+          </div>
+        </div>
+        <!-- /section title -->
+  
+        <!-- Products tab & slick -->
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-4 col-sm-6" *ngFor="let p of productoOferta">
+              <div class="card my-2">
+                <img src="https://p4.wallpaperbetter.com/wallpaper/1017/647/742/food-pizza-cheese-tomatoes-olives-hd-wallpaper-preview.jpg" alt="{{p.name}}" width="200px" class="card-img-top" >
+                <div class="card-header">
+                  <div class="card-title">
+                    <p>{{p.producto.nombre | titlecase}}</p>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h3>{{p.oferta.titulo.substr(0, 40)}} ....</h3>
+                  <p class="lead">Descuento de {{p.descuento | currency:'USD'}}</p>
+                </div>
+  
+                <div class="row d-flex justify-content-center border-primary my-3">
+                  <div class="col-md-6 ">
+  
+                  </div>
+                </div>
+  
+              </div>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  
+  </div>

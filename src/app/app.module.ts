@@ -31,6 +31,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgregaracarritoComponent } from './producto/agregaracarrito/agregaracarrito.component';
 import { ActualizarcarritoComponent } from './pedido/actualizarcarrito/actualizarcarrito.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 //end add paginator
 
 
@@ -51,7 +54,10 @@ import { ActualizarcarritoComponent } from './pedido/actualizarcarrito/actualiza
     PantallaProductoComponent,
     PantallaOfertaComponent,
     AgregaracarritoComponent,
-    ActualizarcarritoComponent
+    ActualizarcarritoComponent,
+    HeaderComponent,
+    FooterComponent,
+    MainpageComponent
    
   ],
   imports: [

@@ -11,11 +11,12 @@ import { PantallaPedidoComponent } from './pedido/pantalla-pedido/pantalla-pedid
 import { PantallaOfertaComponent } from './producto-oferta/pantalla-oferta/pantalla-oferta.component';
 import { PantallaClienteComponent } from './cliente/pantalla-cliente/pantalla-cliente.component';
 import { ActualizarcarritoComponent } from './pedido/actualizarcarrito/actualizarcarrito.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 
 
 const routes: Routes = [
-  {path:'', redirectTo: 'customer', pathMatch:'full'},
+  {path:'', redirectTo: 'mainpage', pathMatch:'full'},
   {path:'newcliente',component:CreateClienteComponent},
   {path:'newPedido',component:CreatePedidoComponent},
   {path:'listarPedido',component:ListarPedidoComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path:'pantalla-pedido',component:PantallaPedidoComponent},
   {path:'pantalla-oferta',component:PantallaOfertaComponent},
   {path:'pantalla-cliente',component:PantallaClienteComponent},
-  {path:'carrito', component:ActualizarcarritoComponent}
+  {path:'carrito', component:ActualizarcarritoComponent},
+  {path:'mainpage',component:MainpageComponent}
 ];
 
 @NgModule({

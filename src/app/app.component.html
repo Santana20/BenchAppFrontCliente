@@ -1,56 +1,7 @@
 <!--
 
 -->
-<!--Barra Superior-->
-<nav class="navbar navbar-expand-lg navbar-light" id="Barra1">
-  <a class="navbar-brand" href="#">Totos Pizza</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navba-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <!--Links de los botones-->
-    <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link" href="#">Conocenos</a>
-      <a class="nav-item nav-link" href="#" >Contacto</a>
-      <a class="nav-item nav-link" href="#">Log In</a>
-      <a class="nav-item nav-link" (click)="mostrarBootstrapModal()" >Sign Up</a>
-      
-    </div>
-    <!--Links de los botones-->
-  </div>
 
-</nav>
-  <!-- Barra Busqueda/Pedido-->
-  <nav class="navbar navbar-expand-lg navbar-light" id=Barra2>
-      <form class="form-inline my-2 my-lg-0">
-        <div class="input-group input-group-sm ">
-          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search..">
-          <div class="input-group-append">
-            <button type="button" class="btn btn-secondary btn-number">
-              <i class="fa fa-search"></i>
-            </button>
-    
-          </div>
-        </div>
-        <a routerLink="pantalla-pedido" class="btn btn-success btn-sm ml-3" href="cart.html">
-          <i class="fa fa-shopping-cart"></i> Pedido
-          <span class="badge badge-light">3</span>
-        </a>
-        <!--BORRAR SI NO SE PUEDE HACER GIT PULL, es el router para ir al componente carrito-->
-        <a routerLink="carrito" class="btn btn-success btn-sm ml-3" >Carrito</a>
-        <!--BORRAR SI NO SE PUEDE HACER GIT PULL, es el router para ir al componente carrito-->
-      </form>
-    </nav>
-    
-    <!--Tercera Barra aqui van los recuadros-->
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button routerLink="pantalla-producto"type="button" class="btn btn-secondary">Productos</button>
-      <button routerLink="pantalla-oferta" type="button" class="btn btn-secondary">Ofertas</button>
-      <button type="button" class="btn btn-secondary">Reseñas</button>
-      <button type="button" class="btn btn-secondary">Recompensas</button>
-      
-     
-    </div>
     
 
  
@@ -59,6 +10,6 @@
 
 
 
-
-
+<app-header></app-header>
 <router-outlet></router-outlet>
+<app-footer></app-footer>

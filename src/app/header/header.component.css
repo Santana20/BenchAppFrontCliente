@@ -1,0 +1,16 @@
+/*Botones*/
+
+.btn-group {
+    display: flex;
+  }
+  
+  .special .btn {
+    flex: 1
+  }
+
+
+  .myCustomClass {
+    background-color:#021f2e;
+    color: white;
+}
+
