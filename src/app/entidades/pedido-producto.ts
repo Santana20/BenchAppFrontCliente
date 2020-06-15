@@ -7,7 +7,7 @@ export class PedidoProducto {
     cantidad_pedida:number;
     producto:Producto;
 
-    constructor(precio, cantidad, prod : Producto)
+    constructor(precio=0, cantidad=0, prod : Producto = undefined)
     {
         this.precio = precio;
         this.cantidad_pedida = cantidad;

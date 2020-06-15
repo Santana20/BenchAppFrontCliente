@@ -28,6 +28,12 @@
                 <h6>{{p.descripcion.substr(0, 40)}} ....</h6>
                 <p class="lead">{{p.precio | currency:'USD'}}</p>
               </div>
+              <!--div para el boton de agregar al carrito-->
+              <div>
+                <button type="button" class="btn btn-primary" (click)="agregaralcarrito(p)">Agregar a Carrito</button>
+              </div>
+              <!--div para el boton de agregar al carrito-->
+
 
               <div class="row d-flex justify-content-center border-primary my-3">
                 <div class="col-md-6 ">

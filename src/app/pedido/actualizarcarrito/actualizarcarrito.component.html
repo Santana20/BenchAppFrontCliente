@@ -1,6 +1,6 @@
 <p>actualizarcarrito works!</p>
 
-<div class ="card border-dar mb-3" *ngIf="carrito.length > 0">
+<div class ="card border-dar mb-3" *ngIf="carrito != null && carrito.length > 0">
     <h5 class ="card-title">Listado de Detalle Pedido</h5>
     <div>
         <table class ="table table-dark">
@@ -16,14 +16,14 @@
             <tbody>
                 <tr *ngFor="let pp of carrito; index as i">
                     <th>{{pp.producto.nombre}}</th>
-                    <th>{{pp.producto.precio}}</th>
+                    <th>{{pp.producto.precio | number:'.2'}}</th>
                     
                     <th>
                         <input type="number" class="form-control" id ="Fcantidad" required [(ngModel)]="pp.cantidad_pedida" name="Fcantidad" #Fcantidad="ngModel" placeholder="Cantidad">
                         <button class="btn btn-danger" (click)="actualizarcantidad(i, Fcantidad.value)"> Actualizar cantidad</button>
                     </th>
 
-                    <th>{{pp.precio}}</th>
+                    <th>{{pp.precio | number:'.2'}}</th>
                     <th>
                         <button class="btn btn-danger" (click)="eliminarPedidoProductodelCarrito(i)"> Eliminar producto</button>
                     </th>
@@ -37,6 +37,7 @@
                     <th></th>
                     <th></th>
                     <!--OBS: BORRAR CUANDO SE SEPA (PREGUNTARLE AL PROFESOR)-->
+                    <!--Para que el monto se muestre con dos decimales-->
                     <th>{{TotalCarrito | number:'.2'}}</th>
                 </tr>
             </tfoot>

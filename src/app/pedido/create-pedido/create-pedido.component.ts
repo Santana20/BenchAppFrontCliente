@@ -34,7 +34,6 @@ export class CreatePedidoComponent implements OnInit {
   ngOnInit(): void {
     //Recibimos el arreglo del carrito
     this.listaPedidosProductos = this.carritoservice.getDetallePedido();
-
     //calculamos la suma total del carrito
     for (let i in this.listaPedidosProductos) {
       this.costoTotal = this.costoTotal + this.listaPedidosProductos[i].precio;
