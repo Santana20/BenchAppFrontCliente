@@ -47,6 +47,9 @@ export class ActualizarcarritoComponent implements OnInit {
       //actualizamos el precio (subtotal) del pedidioproducto
       this.carrito[index].precio = newcantidad * this.carrito[index].producto.precio;
 
+      //actualizamos el localstorage
+      this.carritoservice.addPedidoProductoToCarrito(this.carrito);
+
       //actualizamos el totalcarrito
       this.TotalCarrito += (this.carrito[index].precio - aux);
     //}
