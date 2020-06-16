@@ -18,7 +18,7 @@
         <div class="row">
           <div class="col-md-4 col-sm-6" *ngFor="let p of producto">
             <div class="card my-2">
-              <img src="https://p4.wallpaperbetter.com/wallpaper/1017/647/742/food-pizza-cheese-tomatoes-olives-hd-wallpaper-preview.jpg" alt="{{p.name}}" width="200px" class="card-img-top" >
+              <img src="http://localhost:8080/api/uploads/img/{{p.imagen}}" alt="{{p.imagen}}"height="200px" width="200px" class="card-img-top" >
               <div class="card-header">
                 <div class="card-title">
                   <p>{{p.nombre | titlecase}}</p>
@@ -26,7 +26,7 @@
               </div>
               <div class="card-body">
                 <h6>{{p.descripcion.substr(0, 40)}} ....</h6>
-                <p class="lead">{{p.precio | currency:'USD'}}</p>
+                <p class="lead">&#83;&#47;&#46; {{p.precio}}</p>
               </div>
               <!--div para el boton de agregar al carrito-->
               <div>

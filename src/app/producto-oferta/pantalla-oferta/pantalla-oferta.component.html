@@ -19,15 +19,17 @@
         <div class="row">
           <div class="col-md-4 col-sm-6" *ngFor="let p of productoOferta">
             <div class="card my-2">
-              <img src="https://p4.wallpaperbetter.com/wallpaper/1017/647/742/food-pizza-cheese-tomatoes-olives-hd-wallpaper-preview.jpg" alt="{{p.name}}" width="200px" class="card-img-top" >
+              <img src="http://localhost:8080/api/uploads/img/{{p.producto.imagen}}" alt="{{p.producto.imagen}}"height="200px" width="200px" class="card-img-top" >
               <div class="card-header">
                 <div class="card-title">
-                  <p>{{p.producto.nombre | titlecase}}</p>
+                  <p>{{p.oferta.titulo | titlecase}} {{p.producto.nombre | titlecase}}</p>
                 </div>
               </div>
               <div class="card-body">
-                <h3>{{p.oferta.titulo.substr(0, 40)}} ....</h3>
-                <p class="lead">Descuento de {{p.descuento | currency:'USD'}}</p>
+                <h3>{{p.oferta.descripcion.substr(0, 40)}} ....</h3>
+                <h3>Desde el {{p.fecha_inicio}} hasta el {{p.fecha_fin}}</h3>
+                <p class="lead">&#83;&#47;&#46; {{p.producto.precio}}</p>
+                <p class="lead">Descuento de &#83;&#47;&#46; {{p.descuento }}</p>
               </div>
               
               <!--div para el boton de agregar al carrito-->
