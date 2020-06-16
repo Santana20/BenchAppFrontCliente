@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "FrontClient"
+  "defaultProject": "FrontClient",
+  "cli": {
+    "analytics": false
+  }
 }
