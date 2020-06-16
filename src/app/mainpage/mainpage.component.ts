@@ -25,7 +25,10 @@ export class MainpageComponent implements OnInit {
 
   //inyectamos el carritoservicio
   constructor(private productoService:ProductoService,private ofertaService:OfertaService
-    ,private productoOfertaService:ProductoOfertaService, private carritoservice : CarritoService) { }
+    ,private productoOfertaService:ProductoOfertaService, private carritoservice : CarritoService) 
+    {
+      this.cart = this.carritoservice.getDetallePedido();
+    }
 
   ngOnInit(): void {
     this.reloadData();
