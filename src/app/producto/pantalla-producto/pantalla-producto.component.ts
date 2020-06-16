@@ -46,7 +46,7 @@ export class PantallaProductoComponent implements OnInit {
       this.carritoservice.addPedidoProductoToCarrito(this.cart);
     }
 
-    else 
+    else
     {
       let tempPP = this.cart.find(p => p.producto.codigo == prod.codigo);
       if (tempPP == null)

@@ -67,11 +67,39 @@ export class MainpageComponent implements OnInit {
         tempPP.precio += tempPP.producto.precio;
       }
     }
-
     //actualzaimos el localstorage
     this.carritoservice.addPedidoProductoToCarrito(this.cart);
 
     //imprimimos ´para la confirmacion
     console.log("se agrego al carrito correctamente");
+  }
+
+  agregaralcarritoOferta(oferta : ProductoOferta)
+  {
+    console.log("llegue a la funcion agregaralcarritoOferta");
+    //si el carrito esta vacio
+    if (this.cart == null) 
+    {
+      this.cart = [];
+      this.cart.push(new PedidoProducto(oferta.total, Math.round(( oferta.total + oferta.descuento )/oferta.producto.precio), oferta.producto));
+      
+    }
+
+    else 
+    {
+      let tempPP = this.cart.find(p => p.producto.codigo == oferta.producto.codigo);
+      if (tempPP == null)
+      {
+        this.cart.push(new PedidoProducto(oferta.total, Math.round(( oferta.total + oferta.descuento )/oferta.producto.precio), oferta.producto));
+      }
+
+      else 
+      {
+        tempPP.cantidad_pedida += Math.round(( oferta.total + oferta.descuento )/oferta.producto.precio);
+        tempPP.precio += oferta.total;
+      }
+    }
+    this.carritoservice.addPedidoProductoToCarrito(this.cart);
+    console.log("todo termino sin problemas");
   }
 }

@@ -29,6 +29,12 @@
                 <h3>{{p.oferta.titulo.substr(0, 40)}} ....</h3>
                 <p class="lead">Descuento de {{p.descuento | currency:'USD'}}</p>
               </div>
+              
+              <!--div para el boton de agregar al carrito-->
+              <div>
+                <button type="button" class="btn btn-primary" (click)="agregaralcarritoOferta(p)">Agregar a Carrito</button>
+              </div>
+              <!--div para el boton de agregar al carrito-->
 
               <div class="row d-flex justify-content-center border-primary my-3">
                 <div class="col-md-6 ">
