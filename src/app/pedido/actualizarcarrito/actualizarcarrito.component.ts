@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PedidoProducto } from 'src/app/entidades/pedido-producto';
 import { CarritoService } from 'src/app/servicios/carrito.service';
+import { ProductoOferta } from 'src/app/entidades/producto-oferta';
+import { CarritoOfertaService } from 'src/app/servicios/carrito-oferta.service';
 
 @Component({
   selector: 'app-actualizarcarrito',
@@ -14,10 +16,12 @@ export class ActualizarcarritoComponent implements OnInit {
   //Variables
   //arreglo de pedidos-producto
   carrito : PedidoProducto[];
+  //arreglo de oferta-producto
+  carritoOferta : ProductoOferta[];
   //Total del carrito
   TotalCarrito : number;
 
-  constructor(private carritoservice: CarritoService) 
+  constructor(private carritoservice: CarritoService, private carritoOfertaservice : CarritoOfertaService) 
   {
     this.TotalCarrito = 0;
   }
@@ -26,10 +30,17 @@ export class ActualizarcarritoComponent implements OnInit {
   {
     //Recibimos el arreglo del carrito
     this.carrito = this.carritoservice.getDetallePedido();
+    //Recibimos el arreglo del carritoOferta
+    this.carritoOferta = this.carritoOfertaservice.getDetalleCarritoOferta();
 
     //calculamos la suma total del carrito
     for (let i in this.carrito) {
       this.TotalCarrito = this.TotalCarrito + this.carrito[i].precio;
+    }
+
+    //calculamos la suma total del carrito
+    for (let i in this.carritoOferta) {
+      this.TotalCarrito = this.TotalCarrito + this.carritoOferta[i].total;
     }
   }
 
@@ -67,13 +78,27 @@ export class ActualizarcarritoComponent implements OnInit {
     this.carritoservice.addPedidoProductoToCarrito(this.carrito);
   }
 
+  //metodo para eliminar objeto del carrito.
+  eliminarProductoOfertadelCarrito(index: number)
+  {
+    //Antes de eliminar al objeto, acutailizamos el precio.
+    this.TotalCarrito = this.TotalCarrito - this.carritoOferta[index].total;
+
+    //eliminamos al objeto del arreglo, usando la funcion splice.
+    this.carritoOferta.splice(index, 1);
+    //actualizamos el localstorage
+    this.carritoOfertaservice.addPedidoOfertaToCarrito(this.carritoOferta);
+  }
+
   //metodo para eliminar todos los objetos del carrito.
   eliminarTododelCarrito()
   {
     //eliminamos el item "carrito" del localstorage
     this.carritoservice.removeAllCarrito();
+    this.carritoOfertaservice.removeAllCarritoOferta();
     //actualizamos los objetos del arreglo carrito, para que este vacio
     this.carrito = this.carritoservice.getDetallePedido();
+    this.carritoOferta = this.carritoOfertaservice.getDetalleCarritoOferta();
     //actualizamos el totalcarrito a cero.
     this.TotalCarrito = 0;
   }

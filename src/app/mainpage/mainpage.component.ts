@@ -8,6 +8,7 @@ import { OfertaService } from '../servicios/oferta.service';
 import { ProductoOfertaService } from '../servicios/producto-oferta.service';
 import { PedidoProducto } from '../entidades/pedido-producto';
 import { CarritoService } from '../servicios/carrito.service';
+import { CarritoOfertaService } from '../servicios/carrito-oferta.service';
 
 @Component({
   selector: 'app-mainpage',
@@ -21,13 +22,16 @@ export class MainpageComponent implements OnInit {
 
   //arreglo para el carrito
   cart : PedidoProducto[];
+  //arreglo para el carritoOferta
+  cartOferta : ProductoOferta[];
 
 
   //inyectamos el carritoservicio
   constructor(private productoService:ProductoService,private ofertaService:OfertaService
-    ,private productoOfertaService:ProductoOfertaService, private carritoservice : CarritoService) 
+    ,private productoOfertaService:ProductoOfertaService, private carritoservice : CarritoService, private carritoOfertaservice : CarritoOfertaService) 
     {
       this.cart = this.carritoservice.getDetallePedido();
+      this.cartOferta = this.carritoOfertaservice.getDetalleCarritoOferta();
     }
 
   ngOnInit(): void {
@@ -77,32 +81,31 @@ export class MainpageComponent implements OnInit {
     console.log("se agrego al carrito correctamente");
   }
 
-  agregaralcarritoOferta(oferta : ProductoOferta)
+  agregaralcarritoOferta(ofertaproducto : ProductoOferta)
   {
     console.log("llegue a la funcion agregaralcarritoOferta");
-    //si el carrito esta vacio
-    if (this.cart == null) 
+    //si el carritoOferta esta vacio
+    if (this.cartOferta == null) 
     {
-      this.cart = [];
-      this.cart.push(new PedidoProducto(oferta.total, Math.round(( oferta.total + oferta.descuento )/oferta.producto.precio), oferta.producto));
+      this.cartOferta = [];
+      this.cartOferta.push(new ProductoOferta(ofertaproducto.descuento, ofertaproducto.total, ofertaproducto.producto, ofertaproducto.oferta));
       
     }
-
     else 
     {
-      let tempPP = this.cart.find(p => p.producto.codigo == oferta.producto.codigo);
+      let tempPP = this.cartOferta.find(p => p.producto.codigo == ofertaproducto.producto.codigo);
       if (tempPP == null)
       {
-        this.cart.push(new PedidoProducto(oferta.total, Math.round(( oferta.total + oferta.descuento )/oferta.producto.precio), oferta.producto));
+        this.cartOferta.push(new ProductoOferta(ofertaproducto.descuento, ofertaproducto.total, ofertaproducto.producto, ofertaproducto.oferta));
       }
 
       else 
       {
-        tempPP.cantidad_pedida += Math.round(( oferta.total + oferta.descuento )/oferta.producto.precio);
-        tempPP.precio += oferta.total;
+        tempPP.descuento += ofertaproducto.descuento;
+        tempPP.total += ofertaproducto.total;
       }
     }
-    this.carritoservice.addPedidoProductoToCarrito(this.cart);
+    this.carritoOfertaservice.addPedidoOfertaToCarrito(this.cartOferta);
     console.log("todo termino sin problemas");
   }
 }

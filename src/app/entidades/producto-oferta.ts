@@ -9,4 +9,12 @@ export class ProductoOferta {
     total:number;
     producto:Producto
     oferta:Oferta
+
+    constructor(descuento = 0, total = 0, prod : Producto = null, ofer : Oferta = null)
+    {
+        this.descuento = descuento;
+        this.total = total;
+        this.producto = prod;
+        this.oferta = ofer;
+    }
 }

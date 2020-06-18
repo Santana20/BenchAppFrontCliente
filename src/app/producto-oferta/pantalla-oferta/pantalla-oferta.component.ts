@@ -7,9 +7,7 @@ import { Oferta } from 'src/app/entidades/oferta';
 import { ProductoOferta } from 'src/app/entidades/producto-oferta';
 import { ProductoService } from 'src/app/servicios/producto.service';
 import { OfertaService } from 'src/app/servicios/oferta.service';
-import { PedidoProducto } from 'src/app/entidades/pedido-producto';
-import { CarritoService } from 'src/app/servicios/carrito.service';
-import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { CarritoOfertaService } from 'src/app/servicios/carrito-oferta.service';
 
 @Component({
   selector: 'app-pantalla-oferta',
@@ -21,14 +19,14 @@ export class PantallaOfertaComponent implements OnInit {
   productos:Observable<Producto>;
   ofertas:Observable<Oferta>;
 
-  //arreglo para el carrito
-  cart : PedidoProducto[];
+  //arreglo para el carritoOferta
+  cartOferta : ProductoOferta[];
 
   //se agrega al servicio del carrito
   constructor(private router:Router,private productoOfertaService:ProductoOfertaService,
-    private productoService:ProductoService,private ofertaService:OfertaService, private carritoservice : CarritoService)
+    private productoService:ProductoService,private ofertaService:OfertaService, private carritoOfertaservice : CarritoOfertaService)
     {
-      this.cart = this.carritoservice.getDetallePedido();
+      this.cartOferta = this.carritoOfertaservice.getDetalleCarritoOferta();
     }
 
   ngOnInit(): void {
@@ -45,32 +43,31 @@ export class PantallaOfertaComponent implements OnInit {
     this.ofertaService.getOgertaLista().subscribe(ofertas=>this.ofertas=ofertas);
   }
 
-  agregaralcarritoOferta(oferta : ProductoOferta)
+  agregaralcarritoOferta(ofertaproducto : ProductoOferta)
   {
     console.log("llegue a la funcion agregaralcarritoOferta");
-    //si el carrito esta vacio
-    if (this.cart == null) 
+    //si el carritoOferta esta vacio
+    if (this.cartOferta == null) 
     {
-      this.cart = [];
-      this.cart.push(new PedidoProducto(oferta.total, Math.round(( oferta.total + oferta.descuento )/oferta.producto.precio), oferta.producto));
+      this.cartOferta = [];
+      this.cartOferta.push(new ProductoOferta(ofertaproducto.descuento, ofertaproducto.total, ofertaproducto.producto, ofertaproducto.oferta));
       
     }
-
     else 
     {
-      let tempPP = this.cart.find(p => p.producto.codigo == oferta.producto.codigo);
+      let tempPP = this.cartOferta.find(p => p.producto.codigo == ofertaproducto.producto.codigo);
       if (tempPP == null)
       {
-        this.cart.push(new PedidoProducto(oferta.total, Math.round(( oferta.total + oferta.descuento )/oferta.producto.precio), oferta.producto));
+        this.cartOferta.push(new ProductoOferta(ofertaproducto.descuento, ofertaproducto.total, ofertaproducto.producto, ofertaproducto.oferta));
       }
 
       else 
       {
-        tempPP.cantidad_pedida += Math.round(( oferta.total + oferta.descuento )/oferta.producto.precio);
-        tempPP.precio += oferta.total;
+        tempPP.descuento += ofertaproducto.descuento;
+        tempPP.total += ofertaproducto.total;
       }
     }
-    this.carritoservice.addPedidoProductoToCarrito(this.cart);
+    this.carritoOfertaservice.addPedidoOfertaToCarrito(this.cartOferta);
     console.log("todo termino sin problemas");
   }
 }

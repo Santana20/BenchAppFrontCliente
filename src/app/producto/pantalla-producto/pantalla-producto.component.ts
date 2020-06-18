@@ -43,9 +43,7 @@ export class PantallaProductoComponent implements OnInit {
     {
       this.cart = [];
       this.cart.push(new PedidoProducto(prod.precio, 1, prod));
-      this.carritoservice.addPedidoProductoToCarrito(this.cart);
     }
-
     else
     {
       let tempPP = this.cart.find(p => p.producto.codigo == prod.codigo);
