@@ -18,4 +18,11 @@ export class ProductoService {
       map(response =>response as Producto[])
     );
   }
+
+  getProductSearchNombre(nombre:string):Observable<any>{
+    console.log("llamando a rest:"+this.urlBase+'/buscarNombreProducto/'+nombre);
+    return this.http.get(this.urlBase+'/buscarNombreProducto/'+nombre).pipe(
+      map(response =>response as Producto[])
+    )
+  }
 }

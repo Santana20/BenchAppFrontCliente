@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreateClienteComponent } from '../cliente/create-cliente/create-cliente.component';
+import { PantallaProductoComponent } from '../producto/pantalla-producto/pantalla-producto.component';
+import { EventEmitter } from 'protractor';
+import { MessageServiceService } from '../servicios/message-service.service';
+import { ProductoService } from '../servicios/producto.service';
+import { Producto } from '../entidades/producto';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +14,23 @@ import { CreateClienteComponent } from '../cliente/create-cliente/create-cliente
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  producto:Observable<Producto>;
+  mensaje:string;
 
-  constructor(private ngbModalRef:NgbModal) { }
+  constructor(private productoService:ProductoService,private servicioComunicacion:MessageServiceService,private ngbModalRef:NgbModal) { }
 
   ngOnInit(): void {
+    this.servicioComunicacion.enviarMensajeObservable.subscribe(mensaje=>{
+      this.mensaje=mensaje;
+    });
   }
+  cambioTexto(mensaje:string){
+    this.servicioComunicacion.enviarMensaje(mensaje);
+  }
+  
+  
+
+  
     //Bootstrap Modal
     mostrarBootstrapModal(){
       const opts={
@@ -25,4 +43,6 @@ export class HeaderComponent implements OnInit {
          modalRefNgBots.close();
      }
    }
+
+   
 }

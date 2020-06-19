@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Producto } from 'src/app/entidades/producto';
 import { ProductoService } from 'src/app/servicios/producto.service';
 import { PedidoProducto } from 'src/app/entidades/pedido-producto';
 import { CarritoService } from 'src/app/servicios/carrito.service';
+import { MessageServiceService } from 'src/app/servicios/message-service.service';
 
 @Component({
   selector: 'app-pantalla-producto',
@@ -13,18 +14,33 @@ import { CarritoService } from 'src/app/servicios/carrito.service';
 })
 export class PantallaProductoComponent implements OnInit {
   producto:Observable<Producto>;
-
+  // variable para buscar productos
+  buscar:string;
+  @Input('entrada') entrada="default";
+  mensaje:string;
+  numero:string="piz"
   //arreglo para el carrito
   cart : PedidoProducto[];
 
   //se agrega al servicio del carrito
-  constructor(private router:Router,private productoService:ProductoService, private carritoservice : CarritoService) 
+  constructor(private servicioComunicacion:MessageServiceService,private router:Router,private productoService:ProductoService, private carritoservice : CarritoService) 
   {
     this.cart = this.carritoservice.getDetallePedido();
   }
+  cambioTexto(mensaje:string){
+    this.servicioComunicacion.enviarMensaje(mensaje);
+  }
 
   ngOnInit(): void {
+    
+    this.servicioComunicacion.enviarMensajeObservable.subscribe(mensaje=>{
+      this.mensaje=mensaje;
+      this.procesarClick()
+    });
+    
     this.reloadData();
+    
+    
   }
   listarProducto()
   {
@@ -65,4 +81,10 @@ export class PantallaProductoComponent implements OnInit {
     //imprimimos ´para la confirmacion
     console.log("se agrego al carrito correctamente");
   }
+
+  procesarClick(){
+    this.productoService.getProductSearchNombre(this.mensaje).subscribe(producto=>this.producto=producto);
+  }
+
+  
 }

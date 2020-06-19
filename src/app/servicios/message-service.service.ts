@@ -6,8 +6,14 @@ import { Subject } from "rxjs";
 })
 //Servicio creado para utilizar el localstorage o sesionstorage
 export class MessageServiceService {
+  //comunicaion entre componentes para enviar textos
   subject = new Subject();
+  mensaje:string;
+  private enviarMensajeSubject=new Subject<string>();
+  enviarMensajeObservable=this.enviarMensajeSubject.asObservable();
 
+
+  
   constructor() { }
 
   //envia mensaje de pedidos productos
@@ -21,4 +27,12 @@ export class MessageServiceService {
   {
     return this.subject.asObservable();
   }
+
+  //comunicacion entre componentes
+  enviarMensaje(mensaje:string){
+    this.mensaje=mensaje;
+    this.enviarMensajeSubject.next(mensaje);
+  }
+  
+  
 }
