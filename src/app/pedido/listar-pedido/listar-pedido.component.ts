@@ -12,12 +12,15 @@ import { PedidoProducto } from 'src/app/entidades/pedido-producto';
   styleUrls: ['./listar-pedido.component.css']
 })
 export class ListarPedidoComponent implements OnInit {
-  pedidos:Observable<Pedido>
-  clientes:Observable<Cliente>
-  fcodigo:number
-
-  pedidoProducto:Observable<PedidoProducto>
-  constructor(private clienteService:ClienteService,private pedidoService:PedidoService) { }
+  
+  
+  //variables
+  codigocliente : number;
+  listaPedidosSinRecepcion : Observable<Pedido>;
+  constructor(private clienteService:ClienteService,private pedidoService:PedidoService) 
+  {
+    this.codigocliente = 1;
+  }
 
   ngOnInit(): void {
     this.reloadData();
@@ -26,16 +29,15 @@ export class ListarPedidoComponent implements OnInit {
 
   reloadData(){
     console.log("reload!");
-    this.pedidoService.getPedidosLista().subscribe(pedidos=>this.pedidos=pedidos);
-    this.clienteService.getClienteLista().subscribe(clientes=>this.clientes=clientes);
+    this.pedidoService.listarPedidosActivosdeCliente(this.codigocliente).subscribe(pedido => this.listaPedidosSinRecepcion=pedido);
+  }
+
+  actualizarFechaRecibido(codigoPedido : number) : void
+  {
+    let fecha_actual = new Date();
+    
+    this.pedidoService.ActualizarFechaRecepciondelPedido(fecha_actual, codigoPedido).subscribe();
     
     
   }
-
-  getDetallePedidoProducto(){
-    this.pedidoService.getDetallePedido(this.fcodigo).subscribe(pedidoProducto=>this.pedidoProducto=pedidoProducto);
-  }
-
-  
-
 }

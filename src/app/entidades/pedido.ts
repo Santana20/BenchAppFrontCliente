@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
 export class Pedido {
     codigo:number;
     direccion:string;
-    fecha:Date;
+    fecha_pedido:Date;
+    fecha_recepcion:Date;
+    status:boolean;
     costo_total:number;
     cliente:Cliente;
     productos: PedidoProducto[]

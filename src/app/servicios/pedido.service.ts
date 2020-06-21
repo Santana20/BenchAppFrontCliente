@@ -18,6 +18,19 @@ export class PedidoService {
     return this.http.post(this.urlBase+"/pedido/"+dni,pedido,{headers:this.httpHeaders})
   }
 
+  ActualizarFechaRecepciondelPedido(fechaRecepcion:Date, codigo:number):Observable<Object>
+  {
+    return this.http.put(this.urlBase + "/actualizarPedido/" + codigo, fechaRecepcion, { headers:this.httpHeaders });
+  }
+
+  listarPedidosActivosdeCliente( codigo : number ) : Observable<any>
+  {
+    console.log("llamando a rest");
+    return this.http.get(this.urlBase + "/listarPedidosActivosdeCliente/" + codigo).pipe(
+      map(response => response as Pedido[])
+    );
+  }
+
   createPedidoProducto(fpedido:number,pedidoProducto:Object):Observable<any>{
     
     return this.http.post(this.urlBase+"/RegistrarPP/"+fpedido,pedidoProducto,{headers:this.httpHeaders})

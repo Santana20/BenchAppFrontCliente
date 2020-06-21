@@ -57,13 +57,19 @@ export class CreatePedidoComponent implements OnInit {
     this.pedido.productos = this.listaPedidosProductos;
     //actualizamos el costo toal del pedido por la suma de subtotal del arreglo listaPedidosProductos.
     this.pedido.costo_total = this.costoTotal;
+  
+    this.pedido.fecha_pedido = new Date();
+    this.pedido.status = false;
+    console.log(this.pedido.fecha_pedido);
     
-    console.log(this.pedido);
 
     //eliminamos el item "carrito" del localstorage, es decir, se limpia los pedidosproductos que habian.
     this.carritoservice.removeAllCarrito();
 
     this.carritoOfertaservice.removeAllCarritoOferta();
+
+
+    console.log(this.pedido.fecha_pedido);
 
     this.pedidoService.CreatePedido(this.pedido,this.fdni).subscribe(
      
