@@ -5,6 +5,7 @@ import { Cliente } from 'src/app/entidades/cliente';
 import { ClienteService } from 'src/app/servicios/cliente.service';
 import { PedidoService } from 'src/app/servicios/pedido.service';
 import { PedidoProducto } from 'src/app/entidades/pedido-producto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-pedido',
@@ -17,7 +18,7 @@ export class ListarPedidoComponent implements OnInit {
   //variables
   codigocliente : number;
   listaPedidosSinRecepcion : Observable<Pedido>;
-  constructor(private clienteService:ClienteService,private pedidoService:PedidoService) 
+  constructor(private clienteService:ClienteService,private pedidoService:PedidoService, private router: Router) 
   {
     this.codigocliente = 1;
   }
@@ -36,8 +37,9 @@ export class ListarPedidoComponent implements OnInit {
   {
     let fecha_actual = new Date();
     
-    this.pedidoService.ActualizarFechaRecepciondelPedido(fecha_actual, codigoPedido).subscribe();
-    
-    
+    this.pedidoService.ActualizarFechaRecepciondelPedido(fecha_actual, codigoPedido).subscribe(
+      
+    );
+    console.log("llegue a mandar el rest");
   }
 }

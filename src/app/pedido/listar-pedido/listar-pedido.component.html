@@ -1,6 +1,6 @@
 <p>listar-pedido works!</p>
 
-<div class="card bg-light">
+<div class="card bg-light" *ngIf="listaPedidosSinRecepcion">
     <div class="card-header">Pedidos</div>
     <table class="table table-dark">
         <thead>
@@ -22,7 +22,7 @@
                 <th>{{p.costo_total}}</th>
                 <th>{{p.cliente.nombre}}</th>
                 <th>
-                    <a class="btn btn-danger" (click)="actualizarFechaRecibido(p.codigo)">Recibido</a>
+                    <a class="btn btn-danger" href="listarPedido" (click)="actualizarFechaRecibido(p.codigo)">Recibido</a>
                 </th>
             </tr>
         </tbody>
