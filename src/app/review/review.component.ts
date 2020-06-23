@@ -12,11 +12,13 @@ import { Router } from '@angular/router';
 })
 export class ReviewComponent implements OnInit {
    review:Observable<Review>;
+   reviewMicro:Observable<Review>
    reviews:Review= new Review();
   constructor(private reviewService:ReviewService, private router:Router) { }
 
   ngOnInit(): void {
-    this.reloadData();
+    this.getListadoReviewMicroservice()
+    this.reloadData()
   }
 
   reloadData()
@@ -30,6 +32,11 @@ export class ReviewComponent implements OnInit {
     this.reviewService.crearReview(this.reviews).subscribe(
       data=>this.router.navigate([])
     );
+  }
+
+  getListadoReviewMicroservice(){
+    console.log('cargando!');
+    this.reviewService.getReviewMicroservices().subscribe(reviewMicro=>this.reviewMicro=reviewMicro);
   }
 
 }

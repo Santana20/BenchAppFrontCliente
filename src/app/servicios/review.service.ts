@@ -9,6 +9,7 @@ import { Review } from '../entidades/review';
 export class ReviewService {
 
   private urlBase = 'http://localhost:8080/api';
+  private urlBaseMicroservice='http://localhost:8764/review/api';
   private httpHeaders = new HttpHeaders({'Content-type' : 'application/json'});
 
 
@@ -23,5 +24,12 @@ export class ReviewService {
 
   crearReview(review:Object) : Observable<Object>{
     return this.http.post(this.urlBase+'/registrarReview', review, {headers:this.httpHeaders});
+  }
+
+  getReviewMicroservices():Observable<any>{
+    console.log('llamando a rest :'+this.urlBaseMicroservice+'/ListadoReview');
+    return this.http.get(this.urlBaseMicroservice+'/ListadoReview').pipe(
+      map(response=>response as Review[])
+    );
   }
 }
