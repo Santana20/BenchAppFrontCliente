@@ -18,6 +18,8 @@ export class ListarPedidoComponent implements OnInit {
   //variables
   codigocliente : number;
   listaPedidosSinRecepcion : Observable<Pedido>;
+  listaPedidoAntiguo : Observable<Pedido>
+
   constructor(private clienteService:ClienteService,private pedidoService:PedidoService, private router: Router) 
   {
     this.codigocliente = 1;
@@ -31,6 +33,9 @@ export class ListarPedidoComponent implements OnInit {
   reloadData(){
     console.log("reload!");
     this.pedidoService.listarPedidosActivosdeCliente(this.codigocliente).subscribe(pedido => this.listaPedidosSinRecepcion=pedido);
+
+    this.pedidoService.listarPedidosPasadosdeCliente(this.codigocliente).subscribe(
+      pedido => this.listaPedidoAntiguo = pedido);
   }
 
   actualizarFechaRecibido(codigoPedido : number) : void

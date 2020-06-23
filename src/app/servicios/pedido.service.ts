@@ -31,6 +31,14 @@ export class PedidoService {
     );
   }
 
+  listarPedidosPasadosdeCliente( codigo : number ) : Observable<any>
+  {
+    console.log("llamando a rest");
+    return this.http.get(this.urlBase + "/listarPedidosPasadosdeCliente/" + codigo).pipe(
+      map(response => response as Pedido[])
+    );
+  }
+
   createPedidoProducto(fpedido:number,pedidoProducto:Object):Observable<any>{
     
     return this.http.post(this.urlBase+"/RegistrarPP/"+fpedido,pedidoProducto,{headers:this.httpHeaders})
