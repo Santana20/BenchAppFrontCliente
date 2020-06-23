@@ -1,4 +1,33 @@
 /* Button */
+#productos{
+    font-size: 15px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    padding: 0.3em 0.5em;
+    border-radius: 5px;
+    
+}
+
+#productos:hover{
+    background-color:rgb(40, 110, 40) ;
+    color: white;
+}
+
+#botones{
+    border: 0px;
+    margin: 0px;
+}
+#botones:hover{
+    background-color: brown;
+    font-weight: bold;
+    color: white;
+
+}
+
+h6{
+    font-size: 15px;
+}
 
 input[type="submit"],
 input[type="reset"],

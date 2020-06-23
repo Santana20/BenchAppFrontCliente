@@ -1,45 +1,53 @@
-<p>create-pedido works!</p>
+<br>
 <!--********************************************************************FORM PARA PEDIDO***************************************************************************-->
-<div>
-    <div class="card bg-dark text-white">
-        <h1 class="h3 mb-3 font-weight-normal text-center">Pedido</h1>
-        <div class="card-body text-center">
-            <form (ngSubmit) = "save(createP)" #createP="ngForm">
-                <div class="form-group">
-                    
-                    <input type="text" class="form-control" id ="fdireccion" required [(ngModel)]="pedido.direccion" name="fdireccion" #fdireccion="ngModel" placeholder="Direccion">
-                    <div *ngIf="fdireccion.invalid && (fdireccion.dirty || fdireccion.touched)" class="alert alert-danger">
-                        <div *ngIf="fdireccion.errors.required">La Direccion es Requerida</div>
+<section id="registrer" class="mb-1">
+    <div class="container">
+        <div  class="row">
+            <div  class="col-xs-12 col-sm-6 col-md-6 mx-auto">
+                <div  class="card_register">
+                    <div  class="card bg-green text-black">
+                        <h1 id="Formulario" class="card-body text-center">Pedido</h1>
+                        <div id="Formulario"  class="card-body text-center">
+                            <form  (ngSubmit) = "save(createP)" #createP="ngForm">
+                                <div class="form-group">
+                                    
+                                    <input type="text" class="form-control" id ="fdireccion" required [(ngModel)]="pedido.direccion" name="fdireccion" #fdireccion="ngModel" placeholder="Direccion">
+                                    <div *ngIf="fdireccion.invalid && (fdireccion.dirty || fdireccion.touched)" class="alert alert-danger">
+                                        <div *ngIf="fdireccion.errors.required">La Direccion es Requerida</div>
+                                    </div>
+                        
+                                </div>
+                                <!--
+                                <div class="form-group">
+                                    
+                                    <input type="date" class="form-control" id ="ffecha" required [(ngModel)]="pedido.fecha" name="ffecha" #ffecha="ngModel" placeholder="Fecha">
+                                    <div *ngIf="ffecha.invalid && (ffecha.dirty || ffecha.touched)" class="alert alert-danger">
+                                        <div *ngIf="ffecha.errors.required">La Fecha es Requerida</div>
+                                    </div>
+                        
+                                </div>
+                                -->
+                                <div class="form-group">
+                                    
+                                    <input type="text" class="form-control" id ="fDNI" required [(ngModel)]="fdni" name="fDNI" #fDNI="ngModel" placeholder="DNI">
+                                    <div *ngIf="fDNI.invalid && (fDNI.dirty || fDNI.touched)" class="alert alert-danger">
+                                        <div *ngIf="fDNI.errors.required">El DNI es Requerido</div>
+                                    </div>
+                        
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success" [disabled]="!createP.form.valid || (listaPedidosProductos == null && listaOfertaProductos == null) ||  costoTotal == 0">Registrar</button>
+                                </div>
+                        
+                            </form>
+                        </div>
                     </div>
-        
                 </div>
-                <!--
-                <div class="form-group">
-                    
-                    <input type="date" class="form-control" id ="ffecha" required [(ngModel)]="pedido.fecha" name="ffecha" #ffecha="ngModel" placeholder="Fecha">
-                    <div *ngIf="ffecha.invalid && (ffecha.dirty || ffecha.touched)" class="alert alert-danger">
-                        <div *ngIf="ffecha.errors.required">La Fecha es Requerida</div>
-                    </div>
-        
-                </div>
-                -->
-                <div class="form-group">
-                    
-                    <input type="text" class="form-control" id ="fDNI" required [(ngModel)]="fdni" name="fDNI" #fDNI="ngModel" placeholder="DNI">
-                    <div *ngIf="fDNI.invalid && (fDNI.dirty || fDNI.touched)" class="alert alert-danger">
-                        <div *ngIf="fDNI.errors.required">El DNI es Requerido</div>
-                    </div>
-        
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success" [disabled]="!createP.form.valid || (listaPedidosProductos == null && listaOfertaProductos == null) ||  costoTotal == 0">Registrar</button>
-                </div>
-        
-            </form>
+            </div>
         </div>
-        
     </div>
-</div>
+</section>    
+
 
 
 <p></p>
@@ -103,9 +111,9 @@
 
 <!--******************************************************************LISTAR EL DETALLE PEDIDO********************************************************************-->
 <div class ="card border-dar mb-3" *ngIf="listaPedidosProductos != null && listaPedidosProductos.length > 0">
-    <h5 class ="card-title">Listado de Detalle Pedido</h5>
-    <div>
-        <table class ="table table-dark">
+    <h2 class ="card-title">Listado de Detalle Pedido</h2>
+    <div id="Formulario" >
+        <table class ="table table-white">
             <thead>
                 <tr><h1>Productos</h1></tr>
                 <tr>
