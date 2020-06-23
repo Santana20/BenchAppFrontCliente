@@ -9,6 +9,8 @@ import { ProductoOfertaService } from '../servicios/producto-oferta.service';
 import { PedidoProducto } from '../entidades/pedido-producto';
 import { CarritoService } from '../servicios/carrito.service';
 import { CarritoOfertaService } from '../servicios/carrito-oferta.service';
+import { Review } from '../entidades/review';
+import { ReviewService } from '../servicios/review.service';
 
 @Component({
   selector: 'app-mainpage',
@@ -17,9 +19,9 @@ import { CarritoOfertaService } from '../servicios/carrito-oferta.service';
 })
 export class MainpageComponent implements OnInit {
   producto:Observable<Producto>;
-  productoOferta:Observable<ProductoOferta>
-  ofertas:Observable<Oferta>
-
+  productoOferta:Observable<ProductoOferta>;
+  ofertas:Observable<Oferta>;
+  review:Observable<Review>;
   //arreglo para el carrito
   cart : PedidoProducto[];
   //arreglo para el carritoOferta
@@ -27,7 +29,7 @@ export class MainpageComponent implements OnInit {
 
 
   //inyectamos el carritoservicio
-  constructor(private productoService:ProductoService,private ofertaService:OfertaService
+  constructor(private productoService:ProductoService,private ofertaService:OfertaService, private reviewService:ReviewService
     ,private productoOfertaService:ProductoOfertaService, private carritoservice : CarritoService, private carritoOfertaservice : CarritoOfertaService) 
     {
       this.cart = this.carritoservice.getDetallePedido();
@@ -37,6 +39,7 @@ export class MainpageComponent implements OnInit {
   ngOnInit(): void {
     this.reloadData();
     this.reloadData2();
+    this.reloadData3();
   }
   reloadData()
   {
@@ -49,6 +52,12 @@ export class MainpageComponent implements OnInit {
     this.productoService.getProductList().subscribe(producto=>this.producto=producto);
     this.ofertaService.getOgertaLista().subscribe(ofertas=>this.ofertas=ofertas);
   }
+  reloadData3()
+  {
+    console.log("cargando listar!");
+    this.reviewService.getReviews().subscribe(review=>this.review=review);
+  }
+
 
   agregaralcarrito(prod : Producto)
   {

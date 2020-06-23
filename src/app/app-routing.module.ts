@@ -12,6 +12,8 @@ import { PantallaOfertaComponent } from './producto-oferta/pantalla-oferta/panta
 import { PantallaClienteComponent } from './cliente/pantalla-cliente/pantalla-cliente.component';
 import { ActualizarcarritoComponent } from './pedido/actualizarcarrito/actualizarcarrito.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { ReviewComponent } from './review/review.component';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -28,7 +30,10 @@ const routes: Routes = [
   {path:'pantalla-oferta',component:PantallaOfertaComponent},
   {path:'pantalla-cliente',component:PantallaClienteComponent},
   {path:'carrito', component:ActualizarcarritoComponent},
-  {path:'mainpage',component:MainpageComponent}
+  {path:'mainpage',component:MainpageComponent},
+  {path:'review',component:ReviewComponent},
+  {path:'about',component:AboutComponent}
+
 ];
 
 @NgModule({

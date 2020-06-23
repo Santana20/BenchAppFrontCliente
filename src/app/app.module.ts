@@ -34,6 +34,8 @@ import { ActualizarcarritoComponent } from './pedido/actualizarcarrito/actualiza
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { ReviewComponent } from './review/review.component';
+import { AboutComponent } from './about/about.component';
 //end add paginator
 
 
@@ -57,7 +59,9 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     ActualizarcarritoComponent,
     HeaderComponent,
     FooterComponent,
-    MainpageComponent
+    MainpageComponent,
+    ReviewComponent,
+    AboutComponent
    
   ],
   imports: [

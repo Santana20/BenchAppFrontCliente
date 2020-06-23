@@ -1,0 +1,36 @@
+<div class="col-md-12">
+  <div class="section-title">
+    <hr style="width:100%;border-color: dimgray;">  
+    <h3 class="font-weight-bold mb-4 pb-2"> Nuestras Reseñas</h3>
+  </div>
+</div>
+<div clas="rev" *ngFor="let r of review" >
+    <blockquote >{{r.nombre}}
+        <h5><i>{{r.descripcion}}</i></h5>
+    </blockquote>
+    <hr style="width:100%;border-color: dimgray;">
+</div>
+
+
+
+<div class="container text-center ">  
+  <form  (ngSubmit)="save()" #reviewForm="ngForm">
+    <h3 >Dejanos Una Reseña</h3>
+    
+    <fieldset>
+      <input placeholder="Nombre" type="text" id="fnombre" [(ngModel)]="reviews.nombre" name="fnombre" required #fnombre="ngModel">
+      <div class="alert alert-danger"
+      *ngIf="fnombre.invalid && (fnombre.dirty || fnombre.touched)">
+        <div *ngIf="fnombre.errors.required">
+          Su nombre es requerido.
+        </div>
+
+      </div>
+      <textarea type="text" [(ngModel)]="reviews.descripcion" name="fdes" required #fdes="ngModel" placeholder="Escribe tu mensaje aqui" tabindex="5" required></textarea>
+    </fieldset>
+    <fieldset>
+      <button class="button alt" >Enviar</button>
+    </fieldset>
+    
+  </form>
+</div>
