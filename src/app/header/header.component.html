@@ -13,8 +13,8 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <!--Links de los botones-->
       <div class="navbar-nav ml-auto">
-        <a class="nav-item nav-link" routerLink="about">Conocenos</a>
-        <a class="nav-item nav-link"  >Llamanos 22 15-24-52</a>
+        <a class="nav-item nav-link" href="#">Conocenos</a>
+        <a class="nav-item nav-link" href="#" >Contacto</a>
         <a class="nav-item nav-link" href="#">Log In</a>
         <a class="nav-item nav-link" (click)="mostrarBootstrapModal()" >Sign Up</a>
         
@@ -27,16 +27,21 @@
     
     <!-- Barra Busqueda/Pedido-->
     <nav class="navbar navbar-expand-lg navbar-light" id=Barra2>
-        <!--<form class="form-inline my-2 my-lg-0">-->
-          <div class="form-inline my-2 my-lg-0">
-            <input type="text" [(ngModel)]="mensaje"  class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search.." 
-            (input)="cambioTexto($event.target.value)" >
-            <!--
-            <button  type="button" class="btn btn-secondary btn-number" >
-              <i class="fa fa-search"></i>
-            </button>
-            -->
-          </div>
+        <form class="form-inline my-2 my-lg-0" >
+          <form (ngSubmit)="cambioTexto()">
+            <div class="input-group input-group-sm " >
+              
+              <input type="search" class="form-control" id="Finicial" name="Finicial" 
+                [(ngModel)]="mensaje" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="¿QUE BUSCAS?" >
+                <div class="input-group-append">
+                  <button  type="submit" class="btn btn-secondary btn-number" >
+                    <i class="fa fa-search"></i>
+                  </button>
+          
+                </div>
+             </div>
+           </form>
+         
           <a routerLink="newPedido" class="btn btn-success btn-sm ml-3" href="cart.html">
             <i class="fa fa-shopping-cart"></i> Pedido
             <span class="badge badge-light">3</span>
@@ -44,15 +49,15 @@
           <!--BORRAR SI NO SE PUEDE HACER GIT PULL, es el router para ir al componente carrito-->
           <a routerLink="carrito" class="btn btn-success btn-sm ml-3" >Carrito</a>
           <!--BORRAR SI NO SE PUEDE HACER GIT PULL, es el router para ir al componente carrito-->
-
-          <!--</form>-->
-          <a routerLink="listarPedido" class="btn btn-success btn-sm ml-3" >Listar Pedidos</a>
+        </form>
       </nav>
       
       <!--Tercera Barra aqui van los recuadros-->
       <div class="btn-group" role="group" aria-label="Basic example">
         <button routerLink="pantalla-producto"type="button" class="btn btn-secondary">Productos</button>
         <button routerLink="pantalla-oferta" type="button" class="btn btn-secondary">Ofertas</button>
-        <button routerLink="review" type="button" class="btn btn-secondary">Reseñas</button>
+        <button type="button" class="btn btn-secondary">Reseñas</button>
         <button type="button" class="btn btn-secondary">Recompensas</button>
+        
+       
       </div>
