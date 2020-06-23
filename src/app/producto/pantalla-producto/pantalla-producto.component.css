@@ -11,8 +11,8 @@
 }
 
 #productos:hover{
-    background-color:rgb(40, 110, 40) ;
-    color: white;
+    background-color:rgb(218, 109, 36);
+    color: black;
 }
 
 #botones{
@@ -20,9 +20,9 @@
     margin: 0px;
 }
 #botones:hover{
-    background-color: brown;
+    background-color: rgb(215, 209, 205);
     font-weight: bold;
-    color: white;
+    color: black;
 
 }
 
