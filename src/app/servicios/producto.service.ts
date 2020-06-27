@@ -15,7 +15,7 @@ export class ProductoService {
   constructor(private http: HttpClient, private authService : AuthService) { }
   getProductList():Observable<any>{
     console.log("llamando a rest:"+this.urlBase+'/mostrarProductos');
-    return this.http.get(this.urlBase+'/mostrarProductos', { headers : this.authService.agregarAuthorizationHeader(this.httpHeaders) } ).pipe(
+    return this.http.get(this.urlBase+'/mostrarProductos').pipe(
       map(response =>response as Producto[])
     );
   }

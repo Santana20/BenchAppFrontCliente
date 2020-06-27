@@ -13,29 +13,32 @@ import{NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class CreateClienteComponent implements OnInit {
   cliente:Usuario=new Usuario();
+
+  confirmpassword : string;
   constructor( public modal:NgbModal,private clienteService:ClienteService,private router:Router) { }
 
   //es como crear una propiedad de la clase
   @Input() closeMyModal:(any)=>void;
 
- 
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  Opensm(contenido){
+  Opensm(contenido)
+  {
     this.modal.open(contenido,{size:'sm'});
   }
-  OpenBackground(contenido){
+
+  OpenBackground(contenido)
+  {
     this.modal.open(contenido,{backdropClass:'azul',windowClass:'ventana'});
-    
-    
   }
 
-  OpenOscuro(contenido){
+  OpenOscuro(contenido)
+  {
     this.modal.open(contenido,{windowClass:'oscuro'});
   }
-  save(){
+
+  save()
+  {
     console.log(this.cliente);
     this.clienteService.createCliente(this.cliente).subscribe(
       data=>this.router.navigate([])

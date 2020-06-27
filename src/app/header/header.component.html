@@ -18,7 +18,7 @@
 
         <a *ngIf="!isAuthenticated()" class="nav-item nav-link" routerLink="login">Log In</a>
 
-        <a *ngIf="!isAuthenticated()" class="nav-item nav-link" (click)="mostrarBootstrapModal()" >Sign Up</a>
+        <a  class="nav-item nav-link" (click)="mostrarBootstrapModal()" >Sign Up</a>
 
         <li *ngIf="isAuthenticated()" class="dropdown">
           <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

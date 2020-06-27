@@ -35,18 +35,18 @@ export class HeaderComponent implements OnInit {
   
 
   
-    //Bootstrap Modal
-    mostrarBootstrapModal(){
-      const opts={
-       windowClass:'myCustomClass'
-      }
-      //utilizando el api
-     const modalRefNgBots=this.ngbModalRef.open(CreateClienteComponent,opts);
-      //llamando a componente con una instancia para usar su funcion close
-     modalRefNgBots.componentInstance.closeMyModal=()=>{
-         modalRefNgBots.close();
-     }
-   }
+  //Bootstrap Modal
+  mostrarBootstrapModal(){
+    const opts={
+      windowClass:'myCustomClass'
+    }
+    //utilizando el api
+    const modalRefNgBots=this.ngbModalRef.open(CreateClienteComponent,opts);
+    //llamando a componente con una instancia para usar su funcion close
+    modalRefNgBots.componentInstance.closeMyModal=()=>{
+        modalRefNgBots.close();
+    }
+  }
 
    logout() : void
    {

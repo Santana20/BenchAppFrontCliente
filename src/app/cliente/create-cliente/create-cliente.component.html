@@ -1,5 +1,3 @@
-
-
 <!--
 <ng-template #contenido let-modal>
     <div class="modal-header">
@@ -84,10 +82,6 @@
 
 <button type="button" class="btn btn-success" (click)="OpenBackground(contenido)">Registrar Cliente fondo color</button>
 <button (click)="closeMyModal(false)"> cerrar modal</button>-->
-
-
-
-
 <!--
 <div class=""></div>
 <section id="registrer" class="mb-1">
@@ -177,91 +171,97 @@
 
 -->
 
-
-
 <div class=" body-contenido">
     
-<div class="modal-header">
-    <h4 class="modal-title card-body text-center" >REGISTRO CLIENTE</h4>
-    <button class="close" aria-label="close" type="button" (click)="closeMyModal(false)">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<div class="modal-body">
-    <form (ngSubmit)="save()" #ClienteForm="ngForm" >
-        <!--
+    <div class="modal-header">
+        <h4 class="modal-title card-body text-center" >REGISTRO CLIENTE</h4>
+        <button class="close" aria-label="close" type="button" (click)="closeMyModal(false)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="save()" #ClienteForm="ngForm" >
+            
         <div class="form-group">
-            <input type="text" class="form-control" id="Fdni" [(ngModel)]="cliente.dni"
-                    name="Fdni" required #Fdni="ngModel" placeholder="DNI"  minlength="8">
-            <div class="alert alert-danger"
-                    *ngIf="Fdni.invalid && (Fdni.dirty || Fdni.touched)">
-                <div *ngIf="Fdni.errors.required">
-                        Descripcion es requerida.
-                </div>
-                <div *ngIf="Fdni.errors.minlength">
-                    Minimo 8 digitos
-            </div>
-            </div>
+            <input type="text" class="form-control" id="Fusername" [(ngModel)]="cliente.username" name="Fusername" #Fusername="ngModel" placeholder="Username" required>
 
+            <div class="alert alert-danger" *ngIf="Fusername.invalid && (Fusername.dirty || Fusername.touched)">
+                <div *ngIf="Fusername.errors.required">
+                    Username es requerida.
+                </div>
+            </div>
         </div>
-        
+            
         <div class="form-group">
             <input type="text" class="form-control" id="Fnombre" [(ngModel)]="cliente.nombre"
                     name="Fnombre" required #Fnombre="ngModel" placeholder="Nombre">
+
             <div class="alert alert-danger"
                     *ngIf="Fnombre.invalid && (Fnombre.dirty || Fnombre.touched)">
                 <div *ngIf="Fnombre.errors.required">
-                        Descripcion es requerida.
+                        Nombre es requerida.
                 </div>
             </div>
-
         </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="Fapellido" [(ngModel)]="cliente.apellido" name="Fapellido" required #Fapellido="ngModel" placeholder="Apellido">
+
+            <div class="alert alert-danger"
+                    *ngIf="Fapellido.invalid && (Fapellido.dirty || Fapellido.touched)">
+                <div *ngIf="Fapellido.errors.required">
+                    Apellido es requerida.
+                </div>
+            </div>
+        </div>
+
         <div class="form-group">
             <input type="email" class="form-control" id="Femail" [(ngModel)]="cliente.email"
                     name="Femail" required #Femail="ngModel" placeholder="Email">
+
             <div class="alert alert-danger"
                     *ngIf="Femail.invalid && (Femail.dirty || Femail.touched)">
                 <div *ngIf="Femail.errors.required">
-                        Descripcion es requerida.
+                        Email es requerida.
                 </div>
             </div>
-
         </div>
+
         <div class="form-group">
-            <input type="password" class="form-control" id="Fpasssword" [(ngModel)]="cliente.password"
-                    name="Fpasssword" required #Fpasssword="ngModel" placeholder="Password">
+            <input type="password" class="form-control" id="Fpasssword" [(ngModel)]="cliente.password" name="Fpasssword" required #Fpasssword="ngModel" placeholder="Password">
+            
             <div class="alert alert-danger"
                     *ngIf="Fpasssword.invalid && (Fpasssword.dirty || Fpasssword.touched)">
                 <div *ngIf="Fpasssword.errors.required">
-                        Descripcion es requerida.
+                        Campo es requerida.
                 </div>
             </div>
-
         </div>
+
         <div class="form-group">
-            <input type="text" class="form-control" id="Ftelefono" [(ngModel)]="cliente.telefono"
-                    name="Ftelefono" required #Ftelefono="ngModel" placeholder="Telefono">
+            <input type="password" class="form-control" id="Fconfirmpassword" [(ngModel)]="confirmpassword" name="Fconfirmpassword" #Fconfirmpassword="ngModel" placeholder="Confirmar contraseña" required>
+            
             <div class="alert alert-danger"
-                    *ngIf="Ftelefono.invalid && (Ftelefono.dirty || Ftelefono.touched)">
-                <div *ngIf="Ftelefono.errors.required">
-                        Descripcion es requerida.
+                    *ngIf="Fconfirmpassword.invalid && (Fconfirmpassword.dirty || Fconfirmpassword.touched)">
+                <div *ngIf="Fconfirmpassword.errors.required">
+                        Campo es requerida.
+                </div>
+                <div *ngIf="Fconfirmpassword.value != Fpasssword.value">
+                    Compruebe que sea igual a la contraseña.
                 </div>
             </div>
-
         </div>
+
         <div class="form-group card-body text-center">
             <button type="submit" class="btn btn-success "
             [disabled]="!ClienteForm.form.valid">Registrar</button>
-            
-      </div>
-      -->
-    </form>
-</div>
-<div class="modal-footer">
-    <button (click)="closeMyModal(false)" class="btn btn-success "> CANCELAR</button>
-    
-</div>
-
-    
+        </div>    
+        
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button (click)="closeMyModal(false)" class="btn btn-success ">Cancelar</button>
+        
+    </div>
 </div>
 

@@ -118,8 +118,9 @@ export class AuthService {
   agregarAuthorizationHeader(httpHeaders : HttpHeaders)
   {
     let token = this.getToken();
+    
     if ( token != null ) return httpHeaders.append('Authorization', 'Bearer ' + token);
-
+    
     return httpHeaders;
   }
 }
