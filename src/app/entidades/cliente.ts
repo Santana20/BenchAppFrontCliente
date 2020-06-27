@@ -1,8 +1,9 @@
-export class Cliente {
-    codigo:number;
-    dni:string;
-    nombre:string;
-    email:string;
-    password:string;
-    telefono:string;
-}
+export class Usuario {
+    id: number;
+    username: string;
+    password: string;
+    nombre: string;
+    apellido: string;
+    email: string;
+    roles: string[] = [];
+  }

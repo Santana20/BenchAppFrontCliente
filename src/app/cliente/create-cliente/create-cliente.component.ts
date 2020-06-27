@@ -1,5 +1,5 @@
 import { Component, OnInit ,ViewEncapsulation, Input} from '@angular/core';
-import { Cliente } from 'src/app/entidades/cliente';
+import { Usuario } from 'src/app/entidades/cliente';
 import { ClienteService } from 'src/app/servicios/cliente.service';
 import { Router } from '@angular/router';
 //importamos el modal
@@ -12,7 +12,7 @@ import{NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./create-cliente.component.css']
 })
 export class CreateClienteComponent implements OnInit {
-  cliente:Cliente=new Cliente();
+  cliente:Usuario=new Usuario();
   constructor( public modal:NgbModal,private clienteService:ClienteService,private router:Router) { }
 
   //es como crear una propiedad de la clase

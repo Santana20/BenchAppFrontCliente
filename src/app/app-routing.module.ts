@@ -14,6 +14,7 @@ import { ActualizarcarritoComponent } from './pedido/actualizarcarrito/actualiza
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { ReviewComponent } from './review/review.component';
 import { AboutComponent } from './about/about.component';
+import { IniciarSesionComponent } from './cliente/iniciar-sesion/iniciar-sesion.component';
 
 
 
@@ -32,7 +33,8 @@ const routes: Routes = [
   {path:'carrito', component:ActualizarcarritoComponent},
   {path:'mainpage',component:MainpageComponent},
   {path:'review',component:ReviewComponent},
-  {path:'about',component:AboutComponent}
+  {path:'about',component:AboutComponent},
+  {path:'login',component:IniciarSesionComponent}
 
 ];
 

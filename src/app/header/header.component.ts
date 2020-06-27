@@ -7,6 +7,8 @@ import { MessageServiceService } from '../servicios/message-service.service';
 import { ProductoService } from '../servicios/producto.service';
 import { Producto } from '../entidades/producto';
 import { Observable } from 'rxjs';
+import { AuthService } from '../servicios/servicio-auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +19,9 @@ export class HeaderComponent implements OnInit {
   producto:Observable<Producto>;
   mensaje:string;
 
-  constructor(private productoService:ProductoService,private servicioComunicacion:MessageServiceService,private ngbModalRef:NgbModal) { }
+  constructor(private productoService:ProductoService,private servicioComunicacion:MessageServiceService,private ngbModalRef:NgbModal,
+    private authService: AuthService, private router: Router) 
+    { }
 
   ngOnInit(): void {
     this.servicioComunicacion.enviarMensajeObservable.subscribe(mensaje=>{
@@ -44,5 +48,20 @@ export class HeaderComponent implements OnInit {
      }
    }
 
-   
+   logout() : void
+   {
+     //let username = this.authService.getUsuario().username;
+     this.authService.logout();
+     this.router.navigate(['']);
+   }
+
+   isAuthenticated() : boolean
+   {
+     return this.authService.isAuthenticated();
+   }
+
+   getNombreUsuario() : string
+   {
+     return this.authService.getUsuario().nombre;
+   }
 }

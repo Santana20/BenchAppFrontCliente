@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pedido } from 'src/app/entidades/pedido';
-import { Cliente } from 'src/app/entidades/cliente';
+import { Usuario } from 'src/app/entidades/cliente';
 import { ClienteService } from 'src/app/servicios/cliente.service';
 import { PedidoService } from 'src/app/servicios/pedido.service';
 import { PedidoProducto } from 'src/app/entidades/pedido-producto';

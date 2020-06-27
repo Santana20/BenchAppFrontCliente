@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'; 
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Cliente } from '../entidades/cliente';
+import { Usuario } from '../entidades/cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class ClienteService {
   getClienteLista():Observable<any>{
     console.log("llamando a rest:"+this.urlBase+'/clientes');
     return this.http.get(this.urlBase+'/clientes').pipe(
-      map(response=>response as Cliente[])
+      map(response=>response as Usuario[])
     );
   }
 }

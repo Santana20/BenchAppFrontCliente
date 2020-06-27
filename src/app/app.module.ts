@@ -36,9 +36,11 @@ import { FooterComponent } from './footer/footer.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { ReviewComponent } from './review/review.component';
 import { AboutComponent } from './about/about.component';
+import { IniciarSesionComponent } from './cliente/iniciar-sesion/iniciar-sesion.component';
 //end add paginator
 
-
+import { AuthGuard } from "./servicios/servicio-auth/guards/auth.guard";
+import { RoleGuard } from "./servicios/servicio-auth/guards/role.guard";
 
 @NgModule({
   declarations: [
@@ -61,7 +63,8 @@ import { AboutComponent } from './about/about.component';
     FooterComponent,
     MainpageComponent,
     ReviewComponent,
-    AboutComponent
+    AboutComponent,
+    IniciarSesionComponent
    
   ],
   imports: [
