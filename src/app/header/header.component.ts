@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
       this.mensaje=mensaje;
     });
   }
-  cambioTexto(){
+  cambioTexto(mensaje:string){
     this.servicioComunicacion.enviarMensaje(this.mensaje);
   }
   

@@ -40,6 +40,7 @@ export class CreateClienteComponent implements OnInit {
   save()
   {
     console.log(this.cliente);
+    this.cliente.enabled=true;
     this.clienteService.createCliente(this.cliente).subscribe(
       data=>this.router.navigate([])
     );

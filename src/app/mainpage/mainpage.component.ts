@@ -11,6 +11,7 @@ import { CarritoService } from '../servicios/carrito.service';
 import { CarritoOfertaService } from '../servicios/carrito-oferta.service';
 import { Review } from '../entidades/review';
 import { ReviewService } from '../servicios/review.service';
+import { MessageServiceService } from '../servicios/message-service.service';
 
 @Component({
   selector: 'app-mainpage',
@@ -26,10 +27,11 @@ export class MainpageComponent implements OnInit {
   cart : PedidoProducto[];
   //arreglo para el carritoOferta
   cartOferta : ProductoOferta[];
-
+  //variable para mensaje
+  mensaje:string;
 
   //inyectamos el carritoservicio
-  constructor(private productoService:ProductoService,private ofertaService:OfertaService, private reviewService:ReviewService
+  constructor(private servicioComunicacion:MessageServiceService,private productoService:ProductoService,private ofertaService:OfertaService, private reviewService:ReviewService
     ,private productoOfertaService:ProductoOfertaService, private carritoservice : CarritoService, private carritoOfertaservice : CarritoOfertaService) 
     {
       this.cart = this.carritoservice.getDetallePedido();
@@ -37,9 +39,16 @@ export class MainpageComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.servicioComunicacion.enviarMensajeObservable.subscribe(mensaje=>{
+      this.mensaje=mensaje;
+      this.procesarClick()
+    });
     this.reloadData();
     this.reloadData2();
     this.reloadData3();
+  }
+  procesarClick(){
+    this.productoService.getProductSearchNombre(this.mensaje).subscribe(producto=>this.producto=producto);
   }
   reloadData()
   {
