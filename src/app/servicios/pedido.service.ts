@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Pedido } from '../entidades/pedido';
 import { PedidoProducto } from '../entidades/pedido-producto';
+import { AuthService } from './servicio-auth/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,29 +14,48 @@ export class PedidoService {
   private urlBase = 'http://localhost:8080/api';
   private httpHeaders = new HttpHeaders({'Content-type' : 'application/json'});
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
 
-  CreatePedido(pedido:Object,dni:String):Observable<Object>{
-    return this.http.post(this.urlBase+"/pedido/"+dni,pedido,{headers:this.httpHeaders})
+  private isNoAutorizado(e): boolean {
+    if (e.status == 401) {
+
+      if (this.authService.isAuthenticated()) {
+        this.authService.logout();
+      }
+      this.router.navigate(['/login']);
+      return true;
+    }
+
+    if (e.status == 403) {
+      this.router.navigate(['']);
+      return true;
+    }
+    return false;
+  }
+
+  CreatePedido(pedido:Object,username:String):Observable<Object>{
+    return this.http.post(this.urlBase+"/pedido/"+username,pedido,{ headers: this.authService.agregarAuthorizationHeader(this.httpHeaders) });
   }
 
   ActualizarFechaRecepciondelPedido(fechaRecepcion:Date, codigo:number):Observable<Object>
   {
-    return this.http.put(this.urlBase + "/actualizarPedido/" + codigo, fechaRecepcion, { headers:this.httpHeaders });
+    return this.http.put(this.urlBase + "/actualizarPedido/" + codigo, fechaRecepcion, { headers: this.authService.agregarAuthorizationHeader(this.httpHeaders) });
   }
 
-  listarPedidosActivosdeCliente( codigo : number ) : Observable<any>
+  listarPedidosActivosdeCliente( username : string ) : Observable<any>
   {
     console.log("llamando a rest");
-    return this.http.get(this.urlBase + "/listarPedidosActivosdeCliente/" + codigo).pipe(
+    return this.http.get(this.urlBase + "/listarPedidosActivosdeCliente/" + username,
+    {headers : this.authService.agregarAuthorizationHeader(this.httpHeaders)}).pipe(
       map(response => response as Pedido[])
     );
   }
 
-  listarPedidosPasadosdeCliente( codigo : number ) : Observable<any>
+  listarPedidosPasadosdeCliente( username : string ) : Observable<any>
   {
     console.log("llamando a rest");
-    return this.http.get(this.urlBase + "/listarPedidosPasadosdeCliente/" + codigo).pipe(
+    return this.http.get(this.urlBase + "/listarPedidosPasadosdeCliente/" + username,
+    {headers : this.authService.agregarAuthorizationHeader(this.httpHeaders)}).pipe(
       map(response => response as Pedido[])
     );
   }

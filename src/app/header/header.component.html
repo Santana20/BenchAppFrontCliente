@@ -5,7 +5,7 @@
     <img src="https://images.vexels.com/media/users/3/136312/isolated/preview/213fb725b5fbbd669093a338c9c16bdd-logo-pizza-de-comida-r--pida-by-vexels.png" 
     alt="image pizza" width="100" height="80">
   </div>
-    <a id="titulo" class="navbar-brand" routerLink="">Totos Pizza</a>
+    <a id="titulo" class="navbar-brand" routerLink="">Toto's Pizza</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navba-toggler-icon"></span>
     </button>
@@ -18,7 +18,7 @@
 
         <a *ngIf="!isAuthenticated()" class="nav-item nav-link" routerLink="login">Log In</a>
 
-        <a  class="nav-item nav-link" (click)="mostrarBootstrapModal()" >Sign Up</a>
+        <a *ngIf="!isAuthenticated()" class="nav-item nav-link" (click)="mostrarBootstrapModal()" >Sign Up</a>
 
         <li *ngIf="isAuthenticated()" class="dropdown">
           <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

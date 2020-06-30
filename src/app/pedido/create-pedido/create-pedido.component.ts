@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 import { CarritoService } from 'src/app/servicios/carrito.service';
 import { ProductoOferta } from 'src/app/entidades/producto-oferta';
 import { CarritoOfertaService } from 'src/app/servicios/carrito-oferta.service';
+import { AuthService } from 'src/app/servicios/servicio-auth/auth.service';
 
 @Component({
   selector: 'app-create-pedido',
@@ -18,7 +19,7 @@ import { CarritoOfertaService } from 'src/app/servicios/carrito-oferta.service';
 })
 export class CreatePedidoComponent implements OnInit {
   pedido:Pedido;
-  fdni:String;
+  username:String;
 
   //pedidoProducto:PedidoProducto=new PedidoProducto();
   fpedido:number;
@@ -29,10 +30,11 @@ export class CreatePedidoComponent implements OnInit {
   listaPedidosProductos: PedidoProducto[];
   costoTotal:number;
 
-  constructor(private productoService:ProductoService,private pedidoService:PedidoService,private router:Router, private carritoservice: CarritoService, private carritoOfertaservice: CarritoOfertaService) 
+  constructor(private productoService:ProductoService,private pedidoService:PedidoService,private router:Router, private carritoservice: CarritoService, private carritoOfertaservice: CarritoOfertaService, private authService : AuthService) 
   { 
     this.costoTotal = 0;
     this.pedido = new Pedido();
+    this.username = this.authService.getUsuario().username;
   }
 
   ngOnInit(): void {
@@ -71,12 +73,11 @@ export class CreatePedidoComponent implements OnInit {
 
     console.log(this.pedido.fecha_pedido);
 
-    this.pedidoService.CreatePedido(this.pedido,this.fdni).subscribe(
-     
+    this.pedidoService.CreatePedido(this.pedido,this.username).subscribe(
+      pedido => this.router.navigate(["/listarPedido"])
     );
     
     form.resetForm();
-    
     
     //actualizamos los objetos del arreglo carrito, para que este vacio
     this.listaPedidosProductos = this.carritoservice.getDetallePedido();
@@ -84,6 +85,8 @@ export class CreatePedidoComponent implements OnInit {
     this.listaOfertaProductos = this.carritoOfertaservice.getDetalleCarritoOferta();
     //actualizamos el costototal a cero por si acaso.
     this.costoTotal = 0;
+
+    
   }
 
   listaPOTolistaPP()

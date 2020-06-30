@@ -29,6 +29,18 @@
                     </th>
                 </tr>
             </tbody>
+            <tfoot *ngIf="carritoOferta == null || carritoOferta.length == 0">
+                <tr>
+                    <th>Total: </th>
+                    <!--No se como hacer q una columna ocupe n espacios, por lo que su lifehack respectivo-->
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <!--OBS: BORRAR CUANDO SE SEPA (PREGUNTARLE AL PROFESOR)-->
+                    <!--Para que el monto se muestre con dos decimales-->
+                    <th>{{TotalCarrito | number:'.2'}}</th>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>

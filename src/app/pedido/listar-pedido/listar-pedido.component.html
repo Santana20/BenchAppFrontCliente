@@ -21,7 +21,7 @@
                 <th>{{p.fecha_pedido | date: 'dd/MM/yy HH:mm:ss'}}</th>
                 <th>{{p.costo_total | number: '.2'}}</th>
                 <th>
-                    <a class="btn btn-danger" href="listarPedido" (click)="actualizarFechaRecibido(p.codigo)">Recibido</a>
+                    <a class="btn btn-danger" href="/listarPedido" (click)="actualizarFechaRecibido(p.codigo)">Recibido</a>
                 </th>
             </tr>
         </tbody>

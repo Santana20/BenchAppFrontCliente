@@ -26,7 +26,7 @@
                                     </div>
                         
                                 </div>
-                                -->
+                                
                                 <div class="form-group">
                                     
                                     <input type="text" class="form-control" id ="fDNI" required [(ngModel)]="fdni" name="fDNI" #fDNI="ngModel" placeholder="DNI">
@@ -35,6 +35,7 @@
                                     </div>
                         
                                 </div>
+                                -->
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success" [disabled]="!createP.form.valid || (listaPedidosProductos == null && listaOfertaProductos == null) ||  costoTotal == 0">Registrar</button>
                                 </div>
@@ -131,6 +132,17 @@
                     <th>{{pp.precio | number:'.2'}}</th>
                 </tr>
             </tbody>
+            <tfoot *ngIf="listaOfertaProductos == null || listaOfertaProductos.length == 0">
+                <tr>
+                    <th>Total: </th>
+                    <!--No se como hacer q una columna ocupe n espacios, por lo que su lifehack respectivo-->
+                    <th></th>
+                    <th></th>
+                    <!--OBS: BORRAR CUANDO SE SEPA (PREGUNTARLE AL PROFESOR)-->
+                    <!--Para que el monto se muestre con dos decimales-->
+                    <th>{{costoTotal | number:'.2'}}</th>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>
