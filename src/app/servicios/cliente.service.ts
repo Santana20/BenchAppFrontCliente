@@ -17,7 +17,7 @@ export class ClienteService {
   constructor(private http: HttpClient, private authService : AuthService) { }
 
   createCliente(cliente:Object) : Observable<Object>{
-    return this.http.post(this.urlBase+'/RegistrarUsuario', cliente, { headers: this.authService.agregarAuthorizationHeader(this.httpHeaders) });//enviando el product a REST
+    return this.http.post(this.urlBase+'/RegistrarUsuario', cliente, { headers: this.authService.agregarAuthorizationHeader(this.httpHeaders) });
   }
 
 

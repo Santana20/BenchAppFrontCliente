@@ -54,7 +54,7 @@
              </div>
            </form>
          
-          <a routerLink="newPedido" class="btn btn-success btn-sm ml-3" href="cart.html">
+          <a *ngIf="isAuthenticated()" routerLink="newPedido" class="btn btn-success btn-sm ml-3">
             <i class="fa fa-shopping-cart"></i> Pedido
             <span class="badge badge-light">3</span>
           </a>
@@ -62,7 +62,7 @@
           <a routerLink="carrito" class="btn btn-success btn-sm ml-3" >Carrito</a>
           <!--BORRAR SI NO SE PUEDE HACER GIT PULL, es el router para ir al componente carrito-->
           
-          <a routerLink="listarPedido" class="btn btn-success btn-sm ml-3" >Listar Pedidos</a>
+          <a *ngIf="isAuthenticated()" routerLink="listarPedido" class="btn btn-success btn-sm ml-3" >Listar Pedidos</a>
         </form>
       </nav>
       

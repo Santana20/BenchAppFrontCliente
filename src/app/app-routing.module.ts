@@ -15,14 +15,16 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { ReviewComponent } from './review/review.component';
 import { AboutComponent } from './about/about.component';
 import { IniciarSesionComponent } from './cliente/iniciar-sesion/iniciar-sesion.component';
+import { AuthGuard } from './servicios/servicio-auth/guards/auth.guard';
+import { RoleGuard } from './servicios/servicio-auth/guards/role.guard';
 
 
 
 const routes: Routes = [
   {path:'', redirectTo: 'mainpage', pathMatch:'full'},
   {path:'newcliente',component:CreateClienteComponent},
-  {path:'newPedido',component:CreatePedidoComponent},
-  {path:'listarPedido',component:ListarPedidoComponent},
+  {path:'newPedido',component:CreatePedidoComponent, canActivate : [AuthGuard, RoleGuard], data: { role: 'ROLE_USER' }},
+  {path:'listarPedido',component:ListarPedidoComponent, canActivate : [AuthGuard, RoleGuard], data: { role: 'ROLE_USER' }},
   {path:'listarPedidoProducto',component:ListarPedidoProductoComponent},
   {path:'listarProducto',component:ListarProductoComponent},
   {path:'listarPromo',component:ListarProductoOfertaComponent},
