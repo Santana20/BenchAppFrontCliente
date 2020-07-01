@@ -241,19 +241,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <input type="password" class="form-control" id="Fconfirmpassword" [(ngModel)]="confirmpassword" name="Fconfirmpassword" #Fconfirmpassword="ngModel" placeholder="Confirmar contraseña" required>
-            
-            <div class="alert alert-danger"
-                    *ngIf="Fconfirmpassword.invalid && (Fconfirmpassword.dirty || Fconfirmpassword.touched)">
-                <div *ngIf="Fconfirmpassword.errors.required">
-                        Campo es requerida.
-                </div>
-                <div *ngIf="Fconfirmpassword.value != Fpasssword.value">
-                    Compruebe que sea igual a la contraseña.
-                </div>
-            </div>
-        </div>
+       
 
         <div class="form-group card-body text-center">
             <button type="submit" class="btn btn-success "
