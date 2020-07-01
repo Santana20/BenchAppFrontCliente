@@ -19,7 +19,7 @@
                     <th>{{pp.producto.precio | number:'.2'}}</th>
                     
                     <th>
-                        <input type="number" class="form-control" id ="Fcantidad" required [(ngModel)]="pp.cantidad_pedida" name="Fcantidad" #Fcantidad="ngModel" placeholder="Cantidad">
+                        <input type="number" min="1" class="form-control" id ="Fcantidad" required [(ngModel)]="pp.cantidad_pedida" name="Fcantidad" #Fcantidad="ngModel" placeholder="Cantidad">
                         <button class="btn btn-danger" (click)="actualizarcantidad(i, Fcantidad.value)"> Actualizar cantidad</button>
                     </th>
 
