@@ -6,12 +6,13 @@
             <div  class="col-xs-12 col-sm-6 col-md-6 mx-auto">
                 <div  class="card_register">
                     <div  class="card bg-green text-black">
-                        <h1 id="Formulario" class="card-body text-center">Pedido</h1>
+                        
                         <div id="Formulario"  class="card-body text-center">
+                            <h1 id="Formulario" class="card-body text-center">Pedido</h1>
                             <form  (ngSubmit) = "save(createP)" #createP="ngForm">
                                 <div class="form-group">
                                     
-                                    <input type="text" class="form-control" id ="fdireccion" required [(ngModel)]="pedido.direccion" name="fdireccion" #fdireccion="ngModel" placeholder="Direccion">
+                                    <input type="text" class="form-control" id ="fdireccion" required [(ngModel)]="pedido.direccion" name="fdireccion" #fdireccion="ngModel" placeholder="Ingresa la Direccion de Envio">
                                     <div *ngIf="fdireccion.invalid && (fdireccion.dirty || fdireccion.touched)" class="alert alert-danger">
                                         <div *ngIf="fdireccion.errors.required">La Direccion es Requerida</div>
                                     </div>
@@ -112,7 +113,7 @@
 
 <!--******************************************************************LISTAR EL DETALLE PEDIDO********************************************************************-->
 <div class ="card border-dar mb-3" *ngIf="listaPedidosProductos != null && listaPedidosProductos.length > 0">
-    <h2 class ="card-title">Listado de Detalle Pedido</h2>
+    <h2 class ="card-title">Carrito de Productos</h2>
     <div id="Formulario" >
         <table class ="table table-white">
             <thead>
