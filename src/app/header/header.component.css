@@ -22,3 +22,15 @@
   font-size: 30px;
   font-weight: 800;
 }
+
+#BotonLogIn {
+  background-color: white;
+  color: gray;
+  border: 2px solid #555555;
+  transition-duration: 0.4s;
+}
+
+#BotonLogIn:hover {
+  background-color: #555555;
+  color: white;
+}
