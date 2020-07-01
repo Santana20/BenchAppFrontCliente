@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Review } from '../entidades/review';
 import { ReviewService } from '../servicios/review.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../servicios/servicio-auth/auth.service';
 
 
 @Component({
@@ -14,7 +15,9 @@ export class ReviewComponent implements OnInit {
    review:Observable<Review>;
    reviewMicro:Observable<Review>
    reviews:Review= new Review();
-  constructor(private reviewService:ReviewService, private router:Router) { }
+
+   
+  constructor(private authService : AuthService,private reviewService:ReviewService, private router:Router) { }
 
   ngOnInit(): void {
     this.getListadoReviewMicroservice()

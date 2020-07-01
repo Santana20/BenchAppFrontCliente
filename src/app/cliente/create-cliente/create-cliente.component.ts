@@ -4,6 +4,7 @@ import { ClienteService } from 'src/app/servicios/cliente.service';
 import { Router } from '@angular/router';
 //importamos el modal
 import{NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-cliente',
@@ -37,13 +38,15 @@ export class CreateClienteComponent implements OnInit {
     this.modal.open(contenido,{windowClass:'oscuro'});
   }
 
-  save()
+  save(form : NgForm)
   {
     console.log(this.cliente);
     this.cliente.enabled=true;
     this.clienteService.createCliente(this.cliente).subscribe(
       data=>this.router.navigate([])
     );
+    form.resetForm();
   }
+
 
 }

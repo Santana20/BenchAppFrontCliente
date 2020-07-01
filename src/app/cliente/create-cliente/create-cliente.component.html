@@ -180,7 +180,7 @@
         </button>
     </div>
     <div class="modal-body">
-        <form (ngSubmit)="save()" #ClienteForm="ngForm" >
+        <form (ngSubmit)="save(ClienteForm)" #ClienteForm="ngForm" >
             
         <div class="form-group">
             <input type="text" class="form-control" id="Fusername" [(ngModel)]="cliente.username" name="Fusername" #Fusername="ngModel" placeholder="Username" required>
