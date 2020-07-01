@@ -9,6 +9,7 @@ import { Producto } from '../entidades/producto';
 import { Observable } from 'rxjs';
 import { AuthService } from '../servicios/servicio-auth/auth.service';
 import { Router } from '@angular/router';
+import { IniciarSesionComponent } from '../cliente/iniciar-sesion/iniciar-sesion.component';
 
 @Component({
   selector: 'app-header',
@@ -42,6 +43,17 @@ export class HeaderComponent implements OnInit {
     }
     //utilizando el api
     const modalRefNgBots=this.ngbModalRef.open(CreateClienteComponent,opts);
+    //llamando a componente con una instancia para usar su funcion close
+    modalRefNgBots.componentInstance.closeMyModal=()=>{
+        modalRefNgBots.close();
+    }
+  }
+  mostrarBootstrapModalv2(){
+    const opts={
+      windowClass:'myCustomClass'
+    }
+    //utilizando el api
+    const modalRefNgBots=this.ngbModalRef.open(IniciarSesionComponent,opts);
     //llamando a componente con una instancia para usar su funcion close
     modalRefNgBots.componentInstance.closeMyModal=()=>{
         modalRefNgBots.close();

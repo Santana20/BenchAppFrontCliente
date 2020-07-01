@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Usuario } from 'src/app/entidades/cliente';
 import { AuthService } from "../../servicios/servicio-auth/auth.service";
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',
+  encapsulation:ViewEncapsulation.None,//necesitamos importar esto para los colores
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent implements OnInit {
@@ -14,11 +16,11 @@ export class IniciarSesionComponent implements OnInit {
   usuario: Usuario;
   //variables
 
-  constructor(private authService: AuthService, private router: Router) 
+  constructor(private authService: AuthService, private router: Router,public modal:NgbModal) 
   {
     this.usuario = new Usuario();
   }
-
+  @Input() closeMyModal:(any)=>void;
   ngOnInit(): void 
   {
     if ( this.authService.isAuthenticated() )
@@ -56,4 +58,20 @@ export class IniciarSesionComponent implements OnInit {
       );
   }
   
+  Opensm(contenido)
+  {
+    this.modal.open(contenido,{size:'sm'});
+  }
+
+  OpenBackground(contenido)
+  {
+    this.modal.open(contenido,{backdropClass:'azul',windowClass:'ventana'});
+  }
+
+  OpenOscuro(contenido)
+  {
+    this.modal.open(contenido,{windowClass:'oscuro'});
+  }
+
+
 }

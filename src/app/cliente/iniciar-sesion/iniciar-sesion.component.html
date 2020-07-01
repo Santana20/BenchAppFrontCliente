@@ -1,3 +1,4 @@
+<!--
 <p>iniciar-sesion works!</p>
 <div class="card border-primary text-center">
     <div class="card-header">{{titulo}}</div>
@@ -17,5 +18,52 @@
             <input (click)='login()' type="submit" class="btn btn-lg btn-primary btn-block" value="Iniciar Sesion">
             </div>
         </form>
+    </div>
+</div>
+-->
+
+
+<!--NUEVO LOG IN-->
+<div class=" body-contenido">
+    
+    <div class="modal-header">
+        <h4 class="modal-title card-body text-center">Ingresa</h4>
+        <button class="close" aria-label="close" type="button" (click)="closeMyModal(false)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form method="post" >
+            
+        <div class="form-group">
+            <input type="text" class="form-control" id="Fusername" [(ngModel)]="usuario.username" name="Fusername" #Fusername="ngModel" placeholder="Username" required>
+
+            <div class="alert alert-danger" *ngIf="Fusername.invalid && (Fusername.dirty || Fusername.touched)">
+                <div *ngIf="Fusername.errors.required">
+                    Username es requerida.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="password" class="form-control" id="Fpasssword" [(ngModel)]="usuario.password" name="Fpasssword" required #Fpasssword="ngModel" placeholder="Password">
+            
+            <div class="alert alert-danger"
+                    *ngIf="Fpasssword.invalid && (Fpasssword.dirty || Fpasssword.touched)">
+                <div *ngIf="Fpasssword.errors.required">
+                        Campo es requerida.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group card-body text-center">
+            <button type="submit" class="btn btn-success " (click)='login()'>Ingresar</button>
+        </div>    
+        
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button (click)="closeMyModal(false)" class="btn btn-success ">Cancelar</button>
+        
     </div>
 </div>

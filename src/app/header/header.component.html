@@ -16,7 +16,7 @@
         <a class="nav-item nav-link" routerLink="about">Conocenos</a>
         <a class="nav-item nav-link"  >Llamanos 22 15-24-52</a>
 
-        <a *ngIf="!isAuthenticated()" class="nav-item nav-link" routerLink="login">Log In</a>
+        <a *ngIf="!isAuthenticated()" class="nav-item nav-link" (click)="mostrarBootstrapModalv2()">Log In</a>
 
         <a *ngIf="!isAuthenticated()" class="nav-item nav-link" (click)="mostrarBootstrapModal()" >Sign Up</a>
 
