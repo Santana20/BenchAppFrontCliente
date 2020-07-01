@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/entidades/cliente';
 import { AuthService } from "../../servicios/servicio-auth/auth.service";
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import  swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -50,10 +51,11 @@ export class IniciarSesionComponent implements OnInit {
         this.router.navigate(['']);
 
         console.log("Hola" + usu.username + "has iniciado sesión con éxito!");
+        swal.fire("Hola "+usu.username+" has iniciado sesión con éxito!",'success')
       }, 
       err =>
       {
-        if ( err.status == 400 ) console.log("Error login, Usuario o clave incorrecta");
+        if ( err.status == 400 ) console.log("Error login, Usuario o clave incorrecta");swal.fire("Error login, Usuario o clave incorrecta",'success');
       }
       );
   }
