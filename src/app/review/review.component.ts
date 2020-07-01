@@ -42,4 +42,8 @@ export class ReviewComponent implements OnInit {
     this.reviewService.getReviewMicroservices().subscribe(reviewMicro=>this.reviewMicro=reviewMicro);
   }
 
+  isAuthenticated() : boolean
+   {
+     return this.authService.isAuthenticated();
+   }
 }

@@ -19,7 +19,7 @@
 
 
 
-<div class="container text-center ">  
+<div *ngIf="(isAuthenticated())" class="container text-center ">  
   <form  (ngSubmit)="save()" #reviewForm="ngForm">
     <h3 >Dejanos Una Reseña</h3>
     
